@@ -22,12 +22,15 @@ def board_representation(game_board):
         row_number += 1
         print(game_board[column][letter])
 
+# Function to populate the ships on the game board
+# Populate on game game the result of the selected coordinates and result
+
 def populate_ships_on_board(game_board):
     for ship in range(len(game_board)):
         ship_row, ship_column = randint(0, 9), randint(0, 9)
         while game_board[ship_row][ship_column] == '@':
-            ship_row, ship_column = player_select_coordinates()
-        game_board[ship_row][ship_column] = '@'
+            ship_row, ship_column = randint(0, 9), randint(0, 9)
+        game_board[ship_row][ship_column] = 'X'
 
 def player_select_coordinates():
     pass
