@@ -1,3 +1,5 @@
+from random import randint
+
 # Global variables for the boardgames
 
 HIDDEN_BOARD = [['+'] * 9 for x in range(9)]
@@ -13,15 +15,19 @@ convert_letters_to_numbers_for_coordinates = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E
 
 def board_representation(game_board):
     print('     A B C D E F G H I')
-    print(' +---------------------+')
+    print('     +-+-+-+-+-+-+-+-+-+')
     row_number = 1
     for row in game_board:
         print(row_number, '+'.join(row), end='|')
         row_number += 1
         print(game_board[column][letter])
 
-def populate_ships_on_board():
-    pass
+def populate_ships_on_board(game_board):
+    for ship in range(len(game_board)):
+        ship_row, ship_column = randint(0, 9), randint(0, 9)
+        while game_board[ship_row][ship_column] == 'X':
+            ship_row, ship_column = player_select_coordinates()
+        game_board[ship_row][ship_column] = 'X'
 
 def player_select_coordinates():
     pass
