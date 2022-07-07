@@ -25,15 +25,33 @@ def board_representation(game_board):
 # Function to populate the ships on the game board
 # Populate on game game the result of the selected coordinates and result
 
-def populate_ships_on_board(game_board):
+def populate_ships_on_board(ship, game_board):
     for ship in range(len(game_board)):
         ship_row, ship_column = randint(0, 9), randint(0, 9)
         while game_board[ship_row][ship_column] == '@':
             ship_row, ship_column = randint(0, 9), randint(0, 9)
         game_board[ship_row][ship_column] = 'X'
 
-def player_select_coordinates():
-    pass
+def player_input_coordinates_validation(row, column):
+    try:
+        row = int(input('Please enter a ship row between 1 and 9: \n'))
+        if row < 0 or row > 9:
+            print('Incorrect value. Please try with another value. \n')
+            return False
+
+    except:
+        print('Incorrect value. Please try again. \n')
+        return False
+
+    return True
+
+
+        column = input('Please enter a ship column between A and I: \n').upper()
+        while column not in 'ABCDEFGHI':
+            print('Incorrect value. Please try with another value. \n')
+            column = input('Please enter a ship column between A and I: \n').upper()
+    return int(row) - 1, letters_to_numbers[column]
+
 
 def track_number_ship_hit():
     pass
