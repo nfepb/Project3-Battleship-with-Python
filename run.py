@@ -1,3 +1,11 @@
+"""
+Legend:
+"." = water or empty space
+"@" = part of ship on player game board
+"X" = part of ship that was hit
+"""
+
+
 from random import randint
 
 # Global variables for the boardgames
