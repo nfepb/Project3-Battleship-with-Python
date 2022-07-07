@@ -1,6 +1,7 @@
 """
 Legend:
-"." = water or empty space
+"." = empty space
+"O" = empty location hit
 "@" = part of ship on player game board
 "X" = part of ship that was hit
 """
