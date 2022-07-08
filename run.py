@@ -117,8 +117,33 @@ def print_game_board_grid():
     Function will print the grid.
     Rows are A to J and columns 1 to 10
     """
-    
-    pass
+    global GRID
+    global ALPHABET
+
+    ALPHABET = ALPHABET[0: len(GRID) +1]
+    validate_characters_in_correct_coordinates = True
+
+    # Print out the alphabet based on the length of the grid
+    for row in range(len(GRID)):
+        print(ALPHABET[row], end="|")
+        for column in range(len(GRID[row])):
+            if GRID[row][column] == "@":
+                if validate_characters_in_correct_coordinates:
+    # Print @ for the ship parts that should be seen
+                    print("@", end=" ")
+                else:
+    # print . for the ship parts that should not be visible to the player
+                    print(".", end=" ")
+            else:
+                print(GRID[row][column], end=" ")
+        print("")
+
+    print("  ", end=" ")
+    # Print out the numbers on the grid based on the length of the grid
+    for i in range(len(GRID[0])):
+        print(str(i), end=" ")
+    print("")
+
 
 def validate_selected_coordinates():
     """
