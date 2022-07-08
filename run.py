@@ -50,13 +50,35 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
                 GRID[row][column] = "@"
     return ship_positioning_coordinates
 
-
-
 def position_ship_on_grid(row, column, direction, length):
     """
     Function that will position a ship on the grid
     This function will call on define_grid_and_place_ships to check if this is an adequate position
     """
+    global GRID_SIZE
+
+    start_row, end_row, start_column, end_column = row, row + 1, column, column + 1
+    if direction == "right":
+        if column + length >= GRID_SIZE:
+            return False
+        end_column = column + length
+
+    elif direction == "left":
+        if column - length < 0:
+            return False
+        start_column = column - length + 1
+
+    elif direction == "up":
+        if row - length < 0:
+            return False
+        start_row = row - length + 1
+
+    elif direction == "down":
+        if row + length < 0:
+            return False
+        end_row = row + length
+
+    return define_grid_and_place_ships(start_row, end_row, start_column, end_column)
     
     pass
 
@@ -110,7 +132,6 @@ def main():
     """
     Main function that will call on the other functions in order to run the game
     """
-    define_grid_and_place_ships()
     pass
 
 main()
