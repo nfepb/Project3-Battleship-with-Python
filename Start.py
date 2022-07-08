@@ -12,13 +12,6 @@ from random import randint
 # Global variables for the boardgames
 
 GRID = [[]]
-GRID_SIZE = 10
-NUMBER_OF_SHIPS = 10
-TRIES_LEFT = 50
-GAME_OVER = False
-NUMBER_OF_SHIPS_SUNK = 0
-SHIP_POSITION = [[]]
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 convert_letters_to_numbers_for_coordinates = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E':4, 'F': 5, 'G': 6, 'H': 7, 'I': 8}
 
