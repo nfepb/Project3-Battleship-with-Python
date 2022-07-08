@@ -47,7 +47,7 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
         SHIP_POSITION.append([start_row, end_row, start_col, end_col])
         for row in range(start_row, end_row):
             for column in range(start_col, end_col):
-                GRID[row][column] = "0"
+                GRID[row][column] = "@"
     return ship_positioning_coordinates
 
 
@@ -110,5 +110,7 @@ def main():
     """
     Main function that will call on the other functions in order to run the game
     """
-
+    define_grid_and_place_ships()
     pass
+
+main()
