@@ -10,92 +10,91 @@ Legend:
 from random import randint
 
 # Global variables for the boardgames
-
+# Global variable to the grid
 GRID = [[]]
+# Global variable for the grid size
 GRID_SIZE = 10
+# Global variable for the number of ships to position
 NUMBER_OF_SHIPS = 10
+# Global variable for the number of tries remaining to win the game
 TRIES_LEFT = 50
+# Global variable for game over
 GAME_OVER = False
+# Global variable for the number of ennemy ships sunk
 NUMBER_OF_SHIPS_SUNK = 0
+# Global variable for the ship positions
 SHIP_POSITION = [[]]
+# Global variable for the alphabet
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
-convert_letters_to_numbers_for_coordinates = {'A': 0, 'B': 1, 'C': 2, 'D': 3, 'E':4, 'F': 5, 'G': 6, 'H': 7, 'I': 8}
+# Defining the functions to execute the game
+def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
+    """
+    Function that will check on the grid if it the location is good prior to placing a ship
+    If there already is a ship, it will return false
+    """
+    global GRID
+    global SHIP_POSITION
 
-# Definition of the functions to launch the game
-# Ask for input to define the size of the game board
-
-def game_board_representation(game_board, board_size):
-    while True:
-        board_size = input("How big do you want the game board to be? Please enter a value between 5 and 9: \n")
-        try:
-            row_size_integer = int(board_size)
-            if row_size_integer < 5 or row_size_integer > 9:
-                print("Please enter a number included between 5 and 9. \n")
-                return False
-        except:
-            print("Incorrect value. Please enter a number included between 5 and 9. \n")
-            return False
-
-        return True
-
-    game_board = [["+_" for x in range(game_board.board_size)] for y in range(game_board.board_size)]
-    game_board.display = game_board
-    row_number = 1
-    for row in game_board:
-        print(row_number, '+'.join(row), end='|')
-        row_number += 1
-        print(game_board[column][letter])
-
-# Function to populate the ships on the game board
-# Populate on game game the result of the selected coordinates and result
-
-def populate_ships_on_board(ship, game_board):
-    for ship in range(len(game_board)):
-        ship_row, ship_column = randint(0, 9), randint(0, 9)
-        while game_board[ship_row][ship_column] == '@':
-            ship_row, ship_column = randint(0, 9), randint(0, 9)
-        game_board[ship_row][ship_column] = 'X'
-
-# Represent the boardgame for the player and computer
-# Allow player input to select where to place a hit to find computer ship
-
-def player_input_coordinates_validation(row, column):
-    try:
-        row = int(input('Please enter a ship row between 1 and 9: \n'))
-        if row < 0 or row > 9:
-            print('Incorrect value. Please try with another value. \n')
-            return False
-
-    except:
-        print('Incorrect value. Please try again. \n')
-        return False
-
-    return True
-
-"""
-        column = input('Please enter a ship column between A and I: \n').upper()
-        while column not in 'ABCDEFGHI':
-            print('Incorrect value. Please try with another value. \n')
-            column = input('Please enter a ship column between A and I: \n').upper()
-    return int(row) - 1, letters_to_numbers[column]
-
-"""
-
-# Keep track of the number of ship hit
-
-def track_number_ship_hit():
     pass
 
-def start_game():
-    populate_ships_on_board()
-    turns = 10
+def position_ship_on_grid(row, column, direction, length):
+    """
+    Function that will position a ship on the grid
+    This function will call on define_grid_and_place_ships to check if this is an adequate position
+    """
+    
+    pass
+
+def create_grid():
+    """
+    Function will create 10x10 grid and position ships randomly of different sizes & positions
+    """
+    
+    pass
+
+def print_grid():
+    """
+    Function will print the grid.
+    Rows are A to J and columns 1 to 10
+    """
+    
+    pass
+
+def validate_selected_coordinates():
+    """
+    Function will validate the player input for the selected coordinates
+    """
+
+    pass
+
+def check_if_ship_is_sunk(row, column):
+    """
+    Function will check if all the parts of the ship have been found and it is sunk
+    """
+
+    pass
+
+def select_coordinates():
+    """
+    Function will check the grid and return the outcome of the try
+    This function will validate (validate_selected_coordinates) the value prior to running
+    """
+
+    pass
+
+def is_game_over():
+    """
+    Function to check is the game is over following conditions:
+    - all ships have been sunk (player or computer)
+    - player ran out of tries
+    """
+
     pass
 
 def main():
     """
-    The main function to call on the previously defined functions
-    main() will launch the game 
+    Main function that will call on the other functions in order to run the game
     """
-    player = Player("", 0, [])
-    game_board_representation()
+
+    pass
