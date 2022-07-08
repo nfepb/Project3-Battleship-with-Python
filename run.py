@@ -7,6 +7,7 @@ Legend:
 """
 
 
+from glob import glob
 from random import randint
 
 # Global variables for the boardgames
@@ -79,17 +80,39 @@ def position_ship_on_grid(row, column, direction, length):
         end_row = row + length
 
     return define_grid_and_place_ships(start_row, end_row, start_column, end_column)
-    
-    pass
 
 def create_grid():
     """
     Function will create 10x10 grid and position ships randomly of different sizes & positions
     """
-    
-    pass
+    global GRID
+    global GRID_SIZE
+    global NUMBER_OF_SHIPS
+    global SHIP_POSITION
 
-def print_grid():
+    rows, columns = (GRID_SIZE, GRID_SIZE)
+    GRID = []
+
+    for r in range(rows):
+        row = []
+        for c in range(columns):
+            row.append("| . ")
+        GRID.append(row)
+
+    number_of_remaining_to_place = 0
+
+    SHIP_POSITION = []
+
+    while number_of_remaining_to_place != NUMBER_OF_SHIPS:
+        random_row_for_ship_placement = random.randint(0, rows -1)
+        random_column_for_ship_placement = random.randint(0, columns -1)
+        ship_direction = random.choice["right", "left", "up", "down"]
+        ship_size = random.randint(2, 5)
+        if position_ship_on_grid(random_row_for_ship_placement, random_column_for_ship_placement, ship_direction, ship_size):
+            number_of_remaining_to_place += 1
+
+
+def print_game_board_grid():
     """
     Function will print the grid.
     Rows are A to J and columns 1 to 10
