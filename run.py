@@ -35,8 +35,22 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
     """
     global GRID
     global SHIP_POSITION
+    ship_positioning_coordinates = True
 
-    pass
+    try:
+        for row in range(start_row, end_row):
+            for column in range(start_col, end_col):
+                if GRID[row][column] != ".":
+                    ship_positioning_coordinates = False
+
+    except: # pylint: disable=W0702
+        SHIP_POSITION.append([start_row, end_row, start_col, end_col])
+        for row in range(start_row, end_row):
+            for column in range(start_col, end_col):
+                GRID[row][column] = "0"
+    return ship_positioning_coordinates
+
+
 
 def position_ship_on_grid(row, column, direction, length):
     """
