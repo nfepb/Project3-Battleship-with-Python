@@ -1,12 +1,19 @@
-"""
+INTRO = """
+Welcome admiral! This is a game of battleship.
+The objective is to win the battle by finding and sinking all the ennemy's ships.
+You have 50 tries to sink the ennemy fleet before they overrun you.
+
 Legend:
 "." = empty space
 "O" = empty location hit
 "@" = part of ship on player game board
 "X" = part of ship that was hit
+
+Good luck admiral! \n
 """
 
 
+from curses.ascii import isalpha
 from glob import glob
 from random import randint
 
@@ -247,13 +254,48 @@ def is_game_over():
     - all ships have been sunk (player or computer)
     - player ran out of tries
     """
+    global NUMBER_OF_SHIPS
+    global NUMBER_OF_SHIPS_SUNK
+    global TRIES_LEFT
+    global GAME_OVER
 
-    pass
+    if NUMBER_OF_SHIPS == NUMBER_OF_SHIPS_SUNK:
+        print("Congratulations admiral! You have won the battle!")
+        GAME_OVER = True
+    elif TRIES_LEFT <= 0:
+        GAME_OVER = True
+        print("Sorry admiral, you have ran out of tries. \n")
+        restart_game = input("Do you wish to try again? (Y/N)\n")
+        is_valid_input_restart_game = False
+
+# Allow player to restart a game if the game is over
+        while GAME_OVER is True and is_valid_input_restart_game is False:
+            if len(restart_game) <= 0 or len(restart_game) > 1:
+                print("Incorrect value. Please enter'Y for Yes or N for No.")
+                continue
+            if not isalpha(is_valid_input_restart_game):
+                print("Incorrect value. Please enter'Y for Yes or N for No.")
+                continue
+
+        
 
 def main():
     """
     Main function that will call on the other functions in order to run the game
     """
-    pass
+    global INTRO
+    global GAME_OVER
+
+    print(INTRO)
+    create_grid()
+
+    while GAME_OVER is False:
+        print_game_board_grid()
+        print("There are " + str(NUMBER_OF_SHIPS - NUMBER_OF_SHIPS_SUNK) + " ennemy ships left.\n")
+        print("You have " + str(TRIES_LEFT) + " tries left.")
+        select_coordinates()
+        print("- - - - - - - - - - - - - - - -")
+        print("")
+        is_game_over()
 
 main()
