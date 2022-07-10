@@ -1,3 +1,9 @@
+from curses.ascii import isalpha
+from glob import glob
+from random import randint
+
+# Global variables for the boardgames
+# Global variable for the welcome message
 INTRO = """
 Welcome admiral! This is a game of battleship.
 The objective is to win the battle by finding and sinking all the ennemy's ships.
@@ -11,12 +17,6 @@ Legend:
 
 Good luck admiral! \n
 """
-
-from curses.ascii import isalpha
-from glob import glob
-from random import randint
-
-# Global variables for the boardgames
 # Global variable to the grid
 GRID = [[]]
 # Global variable for the grid size
@@ -186,21 +186,21 @@ def validate_selected_coordinates():
         # Check if input coordinates is a letter and a number
         if not row.isalpha() or not column.isnumeric():
             print(
-                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column."
             )
             continue
         row = ALPHABET.find(row)
         # Check if row input is within the grid size
         if not (-1 < row < GRID_SIZE):
             print(
-                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column."
             )
             continue
 # Convert input in integer and check if column input is within the grid size (alphabet)
         column = int(column)
         if not (-1 < column < GRID_SIZE):
             print(
-                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column."
             )
             continue
 # Check if location of coordinates have already been uncovered with a previous try
