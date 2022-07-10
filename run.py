@@ -12,7 +12,6 @@ Legend:
 Good luck admiral! \n
 """
 
-
 from curses.ascii import isalpha
 from glob import glob
 from random import randint
@@ -35,6 +34,7 @@ SHIP_POSITION = [[]]
 # Global variable for the alphabet
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+
 # Defining the functions to execute the game
 def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
     """
@@ -51,12 +51,13 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
                 if GRID[row][column] != ".":
                     ship_positioning_coordinates = False
 
-    except: # pylint: disable=W0702
+    except:  # pylint: disable=W0702
         SHIP_POSITION.append([start_row, end_row, start_col, end_col])
         for row in range(start_row, end_row):
             for column in range(start_col, end_col):
                 GRID[row][column] = "@"
     return ship_positioning_coordinates
+
 
 def position_ship_on_grid(row, column, direction, length):
     """
@@ -86,7 +87,9 @@ def position_ship_on_grid(row, column, direction, length):
             return False
         end_row = row + length
 
-    return define_grid_and_place_ships(start_row, end_row, start_column, end_column)
+    return define_grid_and_place_ships(start_row, end_row, start_column,
+                                       end_column)
+
 
 def create_grid():
     """
@@ -111,11 +114,13 @@ def create_grid():
     SHIP_POSITION = []
 
     while number_of_remaining_to_place != NUMBER_OF_SHIPS:
-        random_row_for_ship_placement = random.randint(0, rows -1)
-        random_column_for_ship_placement = random.randint(0, columns -1)
+        random_row_for_ship_placement = random.randint(0, rows - 1)
+        random_column_for_ship_placement = random.randint(0, columns - 1)
         ship_direction = random.choice["right", "left", "up", "down"]
         ship_size = random.randint(2, 5)
-        if position_ship_on_grid(random_row_for_ship_placement, random_column_for_ship_placement, ship_direction, ship_size):
+        if position_ship_on_grid(random_row_for_ship_placement,
+                                 random_column_for_ship_placement,
+                                 ship_direction, ship_size):
             number_of_remaining_to_place += 1
 
 
@@ -127,7 +132,7 @@ def print_game_board_grid():
     global GRID
     global ALPHABET
 
-    ALPHABET = ALPHABET[0: len(GRID) +1]
+    ALPHABET = ALPHABET[0:len(GRID) + 1]
     validate_characters_in_correct_coordinates = True
 
     # Print out the alphabet based on the length of the grid
@@ -136,10 +141,10 @@ def print_game_board_grid():
         for column in range(len(GRID[row])):
             if GRID[row][column] == "@":
                 if validate_characters_in_correct_coordinates:
-    # Print @ for the ship parts that should be seen
+                    # Print @ for the ship parts that should be seen
                     print("@", end=" ")
                 else:
-    # print . for the ship parts that should not be visible to the player
+                    # print . for the ship parts that should not be visible to the player
                     print(".", end=" ")
             else:
                 print(GRID[row][column], end=" ")
@@ -165,33 +170,45 @@ def validate_selected_coordinates():
     is_valid_coordinates = False
 
     while is_valid_coordinates is False:
-        coordinates = input("Please enter coordinates to try uncover an ennemy ship (eg. B5 or D1): \n")
+        coordinates = input(
+            "Please enter coordinates to try uncover an ennemy ship (eg. B5 or D1): \n"
+        )
         coordinates = coordinates.upper()
-#Check if input coordinates have 2 characters
+        #Check if input coordinates have 2 characters
         if len(coordinates) <= 0 or len(coordinates) > 2:
-            print("Incorrect input. Please enter coordinates in the following format: B5\n")
+            print(
+                "Incorrect input. Please enter coordinates in the following format: B5\n"
+            )
             continue
 # Define row and column based on the 2 characters from input
         row = coordinates[0]
-        column = coordinates [1]
-# Check if input coordinates is a letter and a number
+        column = coordinates[1]
+        # Check if input coordinates is a letter and a number
         if not row.isalpha() or not column.isnumeric():
-            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            print(
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+            )
             continue
         row = ALPHABET.find(row)
-# Check if row input is within the grid size
+        # Check if row input is within the grid size
         if not (-1 < row < GRID_SIZE):
-            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            print(
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+            )
             continue
 # Convert input in integer and check if column input is within the grid size (alphabet)
         column = int(column)
         if not (-1 < column < GRID_SIZE):
-            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            print(
+                f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column"
+            )
             continue
 # Check if location of coordinates have already been uncovered with a previous try
         if GRID[row][column] == "O" or GRID[row][column] == "X":
             print("This location is already uncovered. Try another location.")
-# Uncover location based on coordinates 
+
+
+# Uncover location based on coordinates
         if GRID[row][column] == "." or GRID[row][column] == "@":
             is_valid_coordinates = True
 
@@ -204,19 +221,20 @@ def check_if_ship_is_sunk(row, column):
     """
     global GRID
     global SHIP_POSITION
-    
+
     for ship in SHIP_POSITION:
         start_row = ship[0]
         end_row = ship[1]
         start_column = ship[2]
-        end_column = ship [3]
+        end_column = ship[3]
         if start_row <= row <= end_row and start_column <= column <= end_column:
-# Check to see if ship is sunk by being covered in "X" by iterating over the grid
+            # Check to see if ship is sunk by being covered in "X" by iterating over the grid
             for row_hit in range(start_row, end_row):
                 for column_hit in range(start_column, end_column):
                     if GRID[row_hit][column_hit] != "X":
                         return False
     return True
+
 
 def select_coordinates():
     """
@@ -231,15 +249,15 @@ def select_coordinates():
     print("")
     print("- - - - - - - - - - - - - - - - - - - ")
 
-# Check on grid what is located on these coordinates and print outcome
-# Decrease by 1 the number of tries left for the player regardless of outcome
+    # Check on grid what is located on these coordinates and print outcome
+    # Decrease by 1 the number of tries left for the player regardless of outcome
     if GRID[row][column] == ".":
         print("Empty space, no ship were hit.")
         GRID[row][column] = "O"
     elif GRID[row][column] == "@":
         print("This is a hit!", end=" ")
         GRID[row][column] = "X"
-# If ship is hit, increase the count of ships sunk
+        # If ship is hit, increase the count of ships sunk
         if check_if_ship_is_sunk(row, column):
             print("The ship has been sunk!")
             NUMBER_OF_SHIPS_SUNK += 1
@@ -247,6 +265,7 @@ def select_coordinates():
             print("The ship has been hit!")
 
     TRIES_LEFT -= 1
+
 
 def is_game_over():
     """
@@ -268,7 +287,7 @@ def is_game_over():
         restart_game = input("Do you wish to try again? (Y/N)\n")
         is_valid_input_restart_game = False
 
-# Allow player to restart a game if the game is over
+        # Allow player to restart a game if the game is over
         while GAME_OVER is True and is_valid_input_restart_game is False:
             if len(restart_game) <= 0 or len(restart_game) > 1:
                 print("Incorrect value. Please enter'Y for Yes or N for No.")
@@ -277,7 +296,6 @@ def is_game_over():
                 print("Incorrect value. Please enter'Y for Yes or N for No.")
                 continue
 
-        
 
 def main():
     """
@@ -291,11 +309,13 @@ def main():
 
     while GAME_OVER is False:
         print_game_board_grid()
-        print("There are " + str(NUMBER_OF_SHIPS - NUMBER_OF_SHIPS_SUNK) + " ennemy ships left.\n")
+        print("There are " + str(NUMBER_OF_SHIPS - NUMBER_OF_SHIPS_SUNK) +
+              " ennemy ships left.\n")
         print("You have " + str(TRIES_LEFT) + " tries left.")
         select_coordinates()
         print("- - - - - - - - - - - - - - - -")
         print("")
         is_game_over()
+
 
 main()
