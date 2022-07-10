@@ -289,12 +289,18 @@ def is_game_over():
 
         # Allow player to restart a game if the game is over
         while GAME_OVER is True and is_valid_input_restart_game is False:
-            if len(restart_game) <= 0 or len(restart_game) > 1:
-                print("Incorrect value. Please enter'Y for Yes or N for No.")
-                continue
-            if not isalpha(is_valid_input_restart_game):
-                print("Incorrect value. Please enter'Y for Yes or N for No.")
-                continue
+            if restart_game.upper() == "N":
+                print("Too bad. See you another time.")
+                exit = True
+                break
+            elif restart_game.upper() == "Y":
+                print("Fantastic!")
+                break
+            else:
+                print("incorrect value. Please enter Y for Yes and N for No")
+
+            if exit:
+                break
 
 
 def main():
