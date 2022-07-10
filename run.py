@@ -241,10 +241,6 @@ def select_coordinates():
 
     TRIES_LEFT -= 1
 
-
-
-    pass
-
 def is_game_over():
     """
     Function to check is the game is over following conditions:
