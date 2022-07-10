@@ -147,17 +147,69 @@ def print_game_board_grid():
 
 def validate_selected_coordinates():
     """
-    Function will validate the player input for the selected coordinates
+    Function will validate the player input for the selected coordinates and uncover grid at location
     """
 
-    pass
+    global ALPHABET
+    global GRID
+
+    row = -1
+    column = -1
+    is_valid_coordinates = False
+
+    while is_valid_coordinates is False:
+        coordinates = input("Please enter coordinates to try uncover an ennemy ship (eg. B5 or D1): \n")
+        coordinates = coordinates.upper()
+#Check if input coordinates have 2 characters
+        if len(coordinates) <= 0 or len(coordinates) > 2:
+            print("Incorrect input. Please enter coordinates in the following format: B5\n")
+            continue
+# Define row and column based on the 2 characters from input
+        row = coordinates[0]
+        column = coordinates [1]
+# Check if input coordinates is a letter and a number
+        if not row.isalpha() or not column.isnumeric():
+            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            continue
+        row = ALPHABET.find(row)
+# Check if row input is within the grid size
+        if not (-1 < row < GRID_SIZE):
+            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            continue
+# Convert input in integer and check if column input is within the grid size (alphabet)
+        column = int(column)
+        if not (-1 < column < GRID_SIZE):
+            print(f"Incorrect input. Please enter a letter (A-I) for row and (0-{len(GRID)}) for column")
+            continue
+# Check if location of coordinates have already been uncovered with a previous try
+        if GRID[row][column] == "O" or GRID[row][column] == "X":
+            print("This location is already uncovered. Try another location.")
+# Uncover location based on coordinates 
+        if GRID[row][column] == "." or GRID[row][column] == "@":
+            is_valid_coordinates = True
+
+    return row, column
+
 
 def check_if_ship_is_sunk(row, column):
     """
     Function will check if all the parts of the ship have been found and it is sunk
     """
-
-    pass
+    global GRID
+    global SHIP_POSITION
+    
+    for ship in SHIP_POSITION:
+        start_row = ship[0]
+        end_row = ship[1]
+        start_column = ship[2]
+        end_column = ship [3]
+        if start_row <= row <= end_row and start_column <= column <= end_column:
+# Check to see if ship is sunk by being covered in "X" by iterating over the grid
+            for row_hit in range(start_row, end_row):
+                for column_hit in range(start_column, end_column):
+                    if GRID[row_hit][column_hit] != "X":
+                        return False
+    return True
 
 def select_coordinates():
     """
