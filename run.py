@@ -216,6 +216,32 @@ def select_coordinates():
     Function will check the grid and return the outcome of the try
     This function will validate (validate_selected_coordinates) the value prior to running
     """
+    global GRID
+    global NUMBER_OF_SHIPS_SUNK
+    global TRIES_LEFT
+
+    row, column = validate_selected_coordinates()
+    print("")
+    print("- - - - - - - - - - - - - - - - - - - ")
+
+# Check on grid what is located on these coordinates and print outcome
+# Decrease by 1 the number of tries left for the player regardless of outcome
+    if GRID[row][column] == ".":
+        print("Empty space, no ship were hit.")
+        GRID[row][column] = "O"
+    elif GRID[row][column] == "@":
+        print("This is a hit!", end=" ")
+        GRID[row][column] = "X"
+# If ship is hit, increase the count of ships sunk
+        if check_if_ship_is_sunk(row, column):
+            print("The ship has been sunk!")
+            NUMBER_OF_SHIPS_SUNK += 1
+        else:
+            print("The ship has been hit!")
+
+    TRIES_LEFT -= 1
+
+
 
     pass
 
