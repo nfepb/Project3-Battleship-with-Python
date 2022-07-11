@@ -36,6 +36,7 @@ ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
 
 # Defining the functions to execute the game
+# Function to build grid visibile to the player
 def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
     """
     Function that will check on the grid if it the location is good prior to placing a ship
@@ -56,7 +57,7 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
                 GRID[row][column] = "@"
     return ship_positioning_coordinates
 
-
+# Function to populate the ships on the grid in any direction
 def position_ship_on_grid(row, column, direction, length):
     """
     Function that will position a ship on the grid
