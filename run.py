@@ -108,10 +108,10 @@ def create_grid():
     SHIP_POSITION = []
 
     while number_of_remaining_to_place != NUMBER_OF_SHIPS:
-        random_row_for_ship_placement = random.randint(0, rows - 1)
-        random_column_for_ship_placement = random.randint(0, columns - 1)
-        ship_direction = random.choice["right", "left", "up", "down"]
-        ship_size = random.randint(2, 5)
+        random_row_for_ship_placement = randint(0, rows - 1)
+        random_column_for_ship_placement = randint(0, columns - 1)
+        ship_direction = choice["right", "left", "up", "down"]
+        ship_size = randint(2, 5)
         if position_ship_on_grid(random_row_for_ship_placement,
                                  random_column_for_ship_placement,
                                  ship_direction, ship_size):
