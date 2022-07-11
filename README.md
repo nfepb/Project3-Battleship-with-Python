@@ -34,4 +34,4 @@ Happy coding!
 
 * Pylance kept giving an error. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error)
 
-* Issues deploying to Heroku.
+* Issues deploying to Heroku with the main module. Random from 

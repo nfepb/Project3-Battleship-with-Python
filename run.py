@@ -110,7 +110,7 @@ def create_grid():
     while number_of_remaining_to_place != NUMBER_OF_SHIPS:
         random_row_for_ship_placement = randint(0, rows - 1)
         random_column_for_ship_placement = randint(0, columns - 1)
-        ship_direction = choice["right", "left", "up", "down"]
+        ship_direction = direction["right", "left", "up", "down"] #randomly chose one index from list
         ship_size = randint(2, 5)
         if position_ship_on_grid(random_row_for_ship_placement,
                                  random_column_for_ship_placement,
@@ -124,19 +124,19 @@ def print_game_board_grid():
     Rows are A to J and columns 1 to 10
     """
 
-    ALPHABET = ALPHABET[0:len(GRID) + 1]
+    alphabet_grid = ALPHABET[0:len(GRID) + 1]
     validate_characters_in_correct_coordinates = True
 
     # Print out the alphabet based on the length of the grid
     for row in range(len(GRID)):
-        print(ALPHABET[row], end="|")
+        print(alphabet_grid[row], end="|")
         for column in range(len(GRID[row])):
             if GRID[row][column] == "@":
                 if validate_characters_in_correct_coordinates:
-                    # Print @ for the ship parts that should be seen
+    # Print @ for the ship parts that should be seen
                     print("@", end=" ")
                 else:
-                    # print . for the ship parts that should not be visible to the player
+    # Print . for the ship parts that should not be visible to the player
                     print(".", end=" ")
             else:
                 print(GRID[row][column], end=" ")
