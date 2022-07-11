@@ -34,13 +34,27 @@ SHIP_POSITION = [[]]
 # Global variable for the alphabet
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 
+class Grid:
+    def __init__(self, size, grid):
+        self.grid = grid 
+        self.size = size
+        
+    def print_game_board_grid(self):
+        grid_letters_to_print = ALPHABET[0:len(GRID) + 1]
+        grid = [[" |" for x in range(self.size)] for y in range(self.size)]
+        print(grid_letters_to_print)
+        print(grid)
 
+
+        pass
+
+"""
 # Defining the functions to execute the game
 # Function to build grid visibile to the player
 def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
     """
-    Function that will check on the grid if it the location is good prior to placing a ship
-    If there already is a ship, it will return false
+    #Function that will check on the grid if it the location is good prior to placing a ship
+    #If there already is a ship, it will return false
     """
     ship_positioning_coordinates = True
 
@@ -60,8 +74,8 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
 # Function to populate the ships on the grid in any direction
 def position_ship_on_grid(row, column, direction, length):
     """
-    Function that will position a ship on the grid
-    This function will call on define_grid_and_place_ships to check if this is an adequate position
+    #Function that will position a ship on the grid
+    #This function will call on define_grid_and_place_ships to check if this is an adequate position
     """
 
     start_row, end_row, start_column, end_column = row, row + 1, column, column + 1
@@ -91,7 +105,7 @@ def position_ship_on_grid(row, column, direction, length):
 
 def create_grid():
     """
-    Function will create 10x10 grid and position ships randomly of different sizes & positions
+    #Function will create 10x10 grid and position ships randomly of different sizes & positions
     """
 
     rows, columns = (GRID_SIZE, GRID_SIZE)
@@ -120,8 +134,8 @@ def create_grid():
 
 def print_game_board_grid():
     """
-    Function will print the grid.
-    Rows are A to J and columns 1 to 10
+    #Function will print the grid.
+    #Rows are A to J and columns 1 to 10
     """
 
     alphabet_grid = ALPHABET[0:len(GRID) + 1]
@@ -151,7 +165,7 @@ def print_game_board_grid():
 
 def validate_selected_coordinates():
     """
-    Function will validate the player input for the selected coordinates and uncover grid at location
+    #Function will validate the player input for the selected coordinates and uncover grid at location
     """
 
     row = -1
@@ -206,7 +220,7 @@ def validate_selected_coordinates():
 
 def check_if_ship_is_sunk(row, column):
     """
-    Function will check if all the parts of the ship have been found and it is sunk
+    #Function will check if all the parts of the ship have been found and it is sunk
     """
 
     for ship in SHIP_POSITION:
@@ -225,8 +239,8 @@ def check_if_ship_is_sunk(row, column):
 
 def select_coordinates():
     """
-    Function will check the grid and return the outcome of the try
-    This function will validate (validate_selected_coordinates) the value prior to running
+    #Function will check the grid and return the outcome of the try
+    #This function will validate (validate_selected_coordinates) the value prior to running
     """
 
     row, column = validate_selected_coordinates()
@@ -253,9 +267,9 @@ def select_coordinates():
 
 def is_game_over():
     """
-    Function to check is the game is over following conditions:
-    - all ships have been sunk (player or computer)
-    - player ran out of tries
+    #Function to check is the game is over following conditions:
+    #- all ships have been sunk (player or computer)
+    #- player ran out of tries
     """
 
     if NUMBER_OF_SHIPS == NUMBER_OF_SHIPS_SUNK:
@@ -285,7 +299,7 @@ def is_game_over():
 
 def main():
     """
-    Main function that will call on the other functions in order to run the game
+    #Main function that will call on the other functions in order to run the game
     """
 
     print(INTRO)
@@ -303,3 +317,5 @@ def main():
 
 
 main()
+
+"""
