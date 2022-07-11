@@ -41,8 +41,6 @@ def define_grid_and_place_ships(start_row, end_row, start_col, end_col):
     Function that will check on the grid if it the location is good prior to placing a ship
     If there already is a ship, it will return false
     """
-    global GRID
-    global SHIP_POSITION
     ship_positioning_coordinates = True
 
     try:
@@ -64,7 +62,6 @@ def position_ship_on_grid(row, column, direction, length):
     Function that will position a ship on the grid
     This function will call on define_grid_and_place_ships to check if this is an adequate position
     """
-    global GRID_SIZE
 
     start_row, end_row, start_column, end_column = row, row + 1, column, column + 1
     if direction == "right":
@@ -95,10 +92,6 @@ def create_grid():
     """
     Function will create 10x10 grid and position ships randomly of different sizes & positions
     """
-    global GRID
-    global GRID_SIZE
-    global NUMBER_OF_SHIPS
-    global SHIP_POSITION
 
     rows, columns = (GRID_SIZE, GRID_SIZE)
     GRID = []
@@ -129,8 +122,6 @@ def print_game_board_grid():
     Function will print the grid.
     Rows are A to J and columns 1 to 10
     """
-    global GRID
-    global ALPHABET
 
     ALPHABET = ALPHABET[0:len(GRID) + 1]
     validate_characters_in_correct_coordinates = True
@@ -161,9 +152,6 @@ def validate_selected_coordinates():
     """
     Function will validate the player input for the selected coordinates and uncover grid at location
     """
-
-    global ALPHABET
-    global GRID
 
     row = -1
     column = -1
@@ -219,8 +207,6 @@ def check_if_ship_is_sunk(row, column):
     """
     Function will check if all the parts of the ship have been found and it is sunk
     """
-    global GRID
-    global SHIP_POSITION
 
     for ship in SHIP_POSITION:
         start_row = ship[0]
@@ -241,9 +227,6 @@ def select_coordinates():
     Function will check the grid and return the outcome of the try
     This function will validate (validate_selected_coordinates) the value prior to running
     """
-    global GRID
-    global NUMBER_OF_SHIPS_SUNK
-    global TRIES_LEFT
 
     row, column = validate_selected_coordinates()
     print("")
@@ -273,10 +256,6 @@ def is_game_over():
     - all ships have been sunk (player or computer)
     - player ran out of tries
     """
-    global NUMBER_OF_SHIPS
-    global NUMBER_OF_SHIPS_SUNK
-    global TRIES_LEFT
-    global GAME_OVER
 
     if NUMBER_OF_SHIPS == NUMBER_OF_SHIPS_SUNK:
         print("Congratulations admiral! You have won the battle!")
@@ -307,8 +286,6 @@ def main():
     """
     Main function that will call on the other functions in order to run the game
     """
-    global INTRO
-    global GAME_OVER
 
     print(INTRO)
     create_grid()
