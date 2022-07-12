@@ -53,7 +53,7 @@ class Grid:
 
 def main():
     print(INTRO)
-    input_difficulty_level_for_board_size()
-    print_game_board_grid()
+    grid_player = Grid([], [])
+    grid_player.input_difficulty_level_for_board_size()
 
 main()
