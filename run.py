@@ -42,7 +42,7 @@ class Grid:
         if player_difficulty_lvl == "1" or player_difficulty_lvl == "2" or player_difficulty_lvl == "3":
             return int(player_difficulty_lvl) - 1
         else:
-            print("Incorrect value. Please enter a difficulty level 1-3.")
+            print("Incorrect value. Please try again.")
 
         
     def print_game_board_grid(self, size):
