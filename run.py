@@ -49,8 +49,8 @@ class Grid:
         else:
             print("Incorrect value. Please try again.")
 
-    def print_game_board_grid(self, player_difficulty_lvl):
-        grid_letters_to_print = ALPHABET[0:len(GRID) + 1]
+    def print_game_board_grid(self, size, player_difficulty_lvl):
+        grid_letters_to_print = ALPHABET[0:len(size) + 1]
         grid_separators = [[" |" for x in range(self.size)]
                            for y in range(self.size)]
         print(grid_letters_to_print)
