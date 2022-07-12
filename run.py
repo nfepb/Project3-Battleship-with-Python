@@ -25,14 +25,13 @@ GRID_SIZE = 10
 
 class Grid:
 
-    def __init__(self, size, difficulty, gameboard):
-        self.grid = grid
+    def __init__(self, size, difficulty, boardgame):
         self.difficulty = difficulty
         self.size = size
-        self.gameboard = gameboard
+        self.boardgame = boardgame
 
     def input_difficulty_level_for_board_size(self):
-        difficulty_level = {'1': 5, '2': 6, '3': 8}
+        difficulty_level = [5, 6, 8]
         while True:
             print("[1]. Easy")
             print("[2]. Medium")
@@ -44,7 +43,9 @@ class Grid:
                 print(f"You have chosen {player_difficulty_lvl}\n")
                 break
 
-        self.size = difficulty_level[player_difficulty_lvl]
+        return int(player_difficulty_lvl) - 1
+
+        self.size = int(difficulty_level[player_difficulty_lvl])
 
     def validate_input_difficulty_level(self, player_difficulty_lvl):
         if player_difficulty_lvl == "1" or player_difficulty_lvl == "2" or player_difficulty_lvl == "3":
@@ -52,23 +53,20 @@ class Grid:
         else:
             print("Incorrect value. Please try again.")
 
-    def print_game_board_grid(self, GRID, size, player_difficulty_lvl, gameboard):
+    def print_game_board_grid(self, size):
         grid_letters_to_print = ALPHABET[0:len(size) + 1]
-        grid_numbers_to_print = GRID_NUMBERS[0:len(size) + 1]
-
-        for x in range(player_difficulty_lvl):
-            gameboard.append([". |"] * difficulty_level) #how to call on previous variable l.40
-            print(" ", " ".join(grid_numbers_to_print))
-            for number, row in zip(grid_letters_to_print, gameboard):
-                print(number, "".join(row))
-
+        grid_separators = [["| . |" for x in range(self.size)]
+                           for y in range(self.size)]
+        print(grid_letters_to_print)
+        for cell in grid_separators:
+            print(cell)
 
 
 def main():
     print(INTRO)
-    grid_player = Grid([], [])
-    grid_player.input_difficulty_level_for_board_size()
-    grid_player.print_game_board_grid()
+    grid1 = Grid(0, [], [])
+    board_size = grid1.input_difficulty_level_for_board_size()
+    grid1.print_game_board_grid(board_size)
 
 
 main()
