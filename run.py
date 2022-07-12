@@ -20,46 +20,48 @@ ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # Global variable for the grid size
 GRID_SIZE = 10
 
+
 class Grid:
-    def __init__(self, size, grid):
-        self.grid = grid 
+
+    def __init__(self, size, difficulty, grid):
+        self.grid = grid
+        self.difficulty = difficulty
         self.size = size
 
     def input_difficulty_level_for_board_size(self):
-        difficulty_level = {'Easy': 5, 'Medium': 6, 'Hard': 8}
+        difficulty_level = {'1': 5, '2': 6, '3': 8}
         while True:
             print("[1]. Easy")
             print("[2]. Medium")
             print("[3]. Hard")
-            player_difficulty_lvl = input("Please select the board size by selecting a difficulty 1-3:\n")
+            player_difficulty_lvl = input(
+                "Please select the board size by selecting a difficulty 1-3:\n"
+            )
             if self.validate_input_difficulty_level(player_difficulty_lvl):
                 print(f"You have chosen {player_difficulty_lvl}\n")
                 break
-        
+
         self.size = difficulty_level[player_difficulty_lvl]
-    
+
     def validate_input_difficulty_level(self, player_difficulty_lvl):
-        if player_difficulty_lvl == "1":
-            return 'Easy'
-            if player_difficulty_lvl == "2":
-                return 'Medium' 
-                if player_difficulty_lvl == "3":
-                    return 'Hard'
+        if player_difficulty_lvl == "1" or player_difficulty_lvl == "2" or player_difficulty_lvl == "3":
             return int(player_difficulty_lvl) - 1
         else:
             print("Incorrect value. Please try again.")
 
-        
-    def print_game_board_grid(self):
+    def print_game_board_grid(self, player_difficulty_lvl):
         grid_letters_to_print = ALPHABET[0:len(GRID) + 1]
-        grid_separators = [[" |" for x in range(self.size)] for y in range(self.size)]
+        grid_separators = [[" |" for x in range(self.size)]
+                           for y in range(self.size)]
         print(grid_letters_to_print)
         print(grid_separators)
+
 
 def main():
     print(INTRO)
     grid_player = Grid([], [])
     grid_player.input_difficulty_level_for_board_size()
     grid_player.print_game_board_grid()
+
 
 main()
