@@ -14,9 +14,11 @@ Legend:
 Good luck admiral! \n
 """
 # Global variable to the grid
-GRID = [[]]
+GRID = []
 # Global variable for the alphabet
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+# Global variable for the grid numbers
+GRID_NUMBERS = "123456789"
 # Global variable for the grid size
 GRID_SIZE = 10
 
@@ -27,6 +29,7 @@ class Grid:
         self.grid = grid
         self.difficulty = difficulty
         self.size = size
+        self.gameboard = gameboard
 
     def input_difficulty_level_for_board_size(self):
         difficulty_level = {'1': 5, '2': 6, '3': 8}
@@ -49,14 +52,16 @@ class Grid:
         else:
             print("Incorrect value. Please try again.")
 
-    def print_game_board_grid(self, size, player_difficulty_lvl):
+    def print_game_board_grid(self, GRID, size, player_difficulty_lvl, gameboard):
         grid_letters_to_print = ALPHABET[0:len(size) + 1]
-        grid_separators = [[" |" for x in range(self.size)]
-                           for y in range(self.size)]
+        grid_numbers_to_print = GRID_NUMBERS[0:len(size) + 1]
 
-        self.grid = gameboard
-        print(grid_letters_to_print)
-        print(grid_separators)
+        for x in range(player_difficulty_lvl):
+            gameboard.append([". |"] * difficulty_level) #how to call on previous variable l.40
+            print(" ", " ".join(grid_numbers_to_print))
+            for number, row in zip(grid_letters_to_print, gameboard):
+                print(number, "".join(row))
+
 
 
 def main():
