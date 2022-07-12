@@ -23,7 +23,7 @@ GRID_SIZE = 10
 
 class Grid:
 
-    def __init__(self, size, difficulty, grid):
+    def __init__(self, size, difficulty, gameboard):
         self.grid = grid
         self.difficulty = difficulty
         self.size = size
@@ -53,6 +53,8 @@ class Grid:
         grid_letters_to_print = ALPHABET[0:len(size) + 1]
         grid_separators = [[" |" for x in range(self.size)]
                            for y in range(self.size)]
+
+        self.grid = gameboard
         print(grid_letters_to_print)
         print(grid_separators)
 
