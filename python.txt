@@ -2,22 +2,6 @@ from curses.ascii import isalpha
 from glob import glob
 from random import randint
 
-# Global variables for the boardgames
-# Global variable for the welcome message
-INTRO = """
-Welcome admiral! This is a game of battleship.
-The objective is to win the battle by finding and sinking all the ennemy's ships.
-You have 50 tries to sink the ennemy fleet before they overrun you.
-
-Legend:
-"." = empty space
-"O" = empty location hit
-"@" = part of ship on player game board
-"X" = part of ship that was hit
-
-Good luck admiral! \n
-"""
-
 
 # Global variable for the number of ships to position
 NUMBER_OF_SHIPS = 10

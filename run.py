@@ -43,9 +43,9 @@ class Grid:
                 print(f"You have chosen {player_difficulty_lvl}\n")
                 break
 
-        return int(player_difficulty_lvl) - 1
+        self.size = int(difficulty_level[int(player_difficulty_lvl)])
 
-        self.size = int(difficulty_level[player_difficulty_lvl])
+        return int(player_difficulty_lvl)
 
     def validate_input_difficulty_level(self, player_difficulty_lvl):
         if player_difficulty_lvl == "1" or player_difficulty_lvl == "2" or player_difficulty_lvl == "3":
@@ -54,7 +54,7 @@ class Grid:
             print("Incorrect value. Please try again.")
 
     def print_game_board_grid(self, size):
-        grid_letters_to_print = ALPHABET[0:len(size) + 1]
+        grid_letters_to_print = ALPHABET[0:size + 1]
         grid_separators = [["| . |" for x in range(self.size)]
                            for y in range(self.size)]
         print(grid_letters_to_print)
@@ -65,6 +65,7 @@ class Grid:
 def main():
     print(INTRO)
     grid1 = Grid(0, [], [])
+    grid_size = grid1.size
     board_size = grid1.input_difficulty_level_for_board_size()
     grid1.print_game_board_grid(board_size)
 
