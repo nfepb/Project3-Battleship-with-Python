@@ -66,7 +66,7 @@ class Grid:
 
     def generate_ship_location(self):
         ship_position = set()
-        while len(ship_position) < 4:
+        while len(ship_position) < 5:
             random_location = (randint(0, self.size - 1),
                                randint(0, self.size - 1))
             ship_position.add(random_location)
