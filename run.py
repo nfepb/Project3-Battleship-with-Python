@@ -21,14 +21,15 @@ GRID = []
 ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 # Global variable for the grid numbers
 GRID_NUMBERS = "123456789"
-# Global variable for the grid size
-GRID_SIZE = 10
+# Global variable for the number of tries remaining to win the game
+TRIES_LEFT = 50
 
 
 class Grid:
 
-    def __init__(self, size, difficulty, boardgame, ships):
+    def __init__(self, size, display, difficulty, boardgame, ships):
         self.difficulty = difficulty
+        self.display = display
         self.size = size
         self.boardgame = boardgame
         self.ships = ships
@@ -56,14 +57,6 @@ class Grid:
         else:
             print("Incorrect value. Please try again.")
 
-    def print_game_board_grid(self, size):
-        grid_letters_to_print = ALPHABET[0:size + 1]
-        grid_separators = [["| . |" for x in range(self.size)]
-                           for y in range(self.size)]
-        print(grid_letters_to_print)
-        for cell in grid_separators:
-            print(cell)
-
     def generate_ship_location(self):
         ship_position = set()
         while len(ship_position) < 5:
@@ -74,18 +67,32 @@ class Grid:
         list_ship_position = list(ship_position)
         self.ships = list_ship_position
 
+    def generate_game_board_grid(self):
+        grid_separators = [["| . |" for x in range(self.size)]
+                           for y in range(self.size)]
+
+        self.display = grid_separators
+
     def position_ships_on_board_grid(self):
         for ship in self.ships:
-            self.boardgame[ship[0]][ship[1]] = "@"
+            self.display[ship[0]][ship[1]] = "@"
+
+    def print_grid_with_ships(self, size):
+        grid_letters_to_print = ALPHABET[0:size + 1]
+        print(grid_letters_to_print)
+        for cell in self.display:
+            print(cell)
 
 
 def main():
     print(INTRO)
-    grid1 = Grid(0, [], [], [])
+    grid1 = Grid(0, 0, [], [], [])
     board_size = grid1.input_difficulty_level_for_board_size()
-    grid1.print_game_board_grid(board_size)
+    grid1.generate_game_board_grid(board_size)
     grid1.generate_ship_location()
     grid1.position_ships_on_board_grid()
+
+    grid1.print_grid_with_ships()
 
 
 main()

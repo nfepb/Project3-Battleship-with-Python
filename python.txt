@@ -5,8 +5,7 @@ from random import randint
 
 # Global variable for the number of ships to position
 NUMBER_OF_SHIPS = 10
-# Global variable for the number of tries remaining to win the game
-TRIES_LEFT = 50
+
 # Global variable for game over
 GAME_OVER = False
 # Global variable for the number of ennemy ships sunk
