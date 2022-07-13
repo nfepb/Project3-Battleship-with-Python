@@ -1,3 +1,5 @@
+from random import randint
+
 # Global variables for the boardgames
 # Global variable for the welcome message
 INTRO = """
@@ -25,10 +27,11 @@ GRID_SIZE = 10
 
 class Grid:
 
-    def __init__(self, size, difficulty, boardgame):
+    def __init__(self, size, difficulty, boardgame, ships):
         self.difficulty = difficulty
         self.size = size
         self.boardgame = boardgame
+        self.ships = ships
 
     def input_difficulty_level_for_board_size(self):
         difficulty_level = [5, 6, 8]
@@ -43,9 +46,9 @@ class Grid:
                 print(f"You have chosen {player_difficulty_lvl}\n")
                 break
 
-        self.size = int(difficulty_level[int(player_difficulty_lvl)])
+        self.size = int(difficulty_level[int(player_difficulty_lvl) - 1])
 
-        return int(player_difficulty_lvl)
+        return self.size
 
     def validate_input_difficulty_level(self, player_difficulty_lvl):
         if player_difficulty_lvl == "1" or player_difficulty_lvl == "2" or player_difficulty_lvl == "3":
@@ -61,13 +64,28 @@ class Grid:
         for cell in grid_separators:
             print(cell)
 
+    def generate_ship_location(self):
+        ship_position = set()
+        while len(ship_position) < 4:
+            random_location = (randint(0, self.size - 1),
+                               randint(0, self.size - 1))
+            ship_position.add(random_location)
+
+        list_ship_position = list(ship_position)
+        self.ships = list_ship_position
+
+    def position_ships_on_board_grid(self):
+        for ship in self.ships:
+            self.boardgame[ship[0]][ship[1]] = "@"
+
 
 def main():
     print(INTRO)
-    grid1 = Grid(0, [], [])
-    grid_size = grid1.size
+    grid1 = Grid(0, [], [], [])
     board_size = grid1.input_difficulty_level_for_board_size()
     grid1.print_game_board_grid(board_size)
+    grid1.generate_ship_location()
+    grid1.position_ships_on_board_grid()
 
 
 main()
