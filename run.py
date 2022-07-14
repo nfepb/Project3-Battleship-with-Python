@@ -18,7 +18,11 @@ Good luck admiral! \n
 # Global variable to the grid
 GRID = []
 # Global variable for the alphabet
-ALPHABET = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+ALPHABET = [
+    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
+    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
+]
+
 # Global variable for the grid numbers
 GRID_NUMBERS = "123456789"
 # Global variable for the number of tries remaining to win the game
@@ -67,22 +71,23 @@ class Grid:
         list_ship_position = list(ship_position)
         self.ships = list_ship_position
 
-    def generate_game_board_grid(self):
-        grid_separators = [["| . |" for x in range(self.size)]
+    def generate_game_board_grid(self, size):
+        grid_separators = [[" . " for x in range(self.size)]
                            for y in range(self.size)]
 
         self.display = grid_separators
 
     def position_ships_on_board_grid(self):
-        print(" ", " ".join(GRID_NUMBERS))
         for ship in self.ships:
-            self.display[ship[0]][ship[1]] = "@"
+            self.display[ship[0]][ship[1]] = " @ "
 
     def print_grid_with_ships(self, size):
-        grid_letters_to_print = ALPHABET[0:size + 1]
-        print(grid_letters_to_print)
-        for cell in self.display:
-            print(cell)
+        grid_numbers_to_print = 1
+        header = '      '.join(x for x in ALPHABET[0:size + 1])
+        print('    ' + header)
+        for row in self.display:
+            print(str(grid_numbers_to_print) + ' ' + str(row))
+            grid_numbers_to_print += 1
 
 
 def main():
@@ -93,7 +98,7 @@ def main():
     grid1.generate_ship_location()
     grid1.position_ships_on_board_grid()
 
-    grid1.print_grid_with_ships()
+    grid1.print_grid_with_ships(board_size)
 
 
 main()
