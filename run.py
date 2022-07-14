@@ -74,6 +74,7 @@ class Grid:
         self.display = grid_separators
 
     def position_ships_on_board_grid(self):
+        print(" ", " ".join(GRID_NUMBERS))
         for ship in self.ships:
             self.display[ship[0]][ship[1]] = "@"
 
