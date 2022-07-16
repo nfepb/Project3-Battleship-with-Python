@@ -22,11 +22,8 @@ ALPHABET = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
     'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
 ]
-
 # Global variable for the grid numbers
 GRID_NUMBERS = "123456789"
-# Global variable for the number of tries remaining to win the game
-TRIES_LEFT = 50
 
 
 class Grid:
@@ -67,19 +64,20 @@ class Grid:
             random_location = (randint(0, self.size - 1),
                                randint(0, self.size - 1))
             ship_position.add(random_location)
+            print((ship_position))
 
         list_ship_position = list(ship_position)
         self.ships = list_ship_position
 
     def generate_game_board_grid(self, size):
-        grid_separators = [[" . " for x in range(self.size)]
+        grid_separators = [[' . ' for x in range(self.size)]
                            for y in range(self.size)]
 
         self.display = grid_separators
 
     def position_ships_on_board_grid(self):
         for ship in self.ships:
-            self.display[ship[0]][ship[1]] = " @ "
+            self.display[ship[0]][ship[1]] = ' @ '
 
     def print_grid_with_ships(self, size):
         grid_numbers_to_print = 1
@@ -92,19 +90,19 @@ class Grid:
 
 def main():
     print(INTRO)
-    grid1 = Grid(0, 0, [], [], [])
-    board_size = grid1.input_difficulty_level_for_board_size()
-    grid1.generate_game_board_grid(board_size)
-    grid1.generate_ship_location()
-    grid1.position_ships_on_board_grid()
-    grid1.print_grid_with_ships(board_size)
+    player_board = Grid(0, 0, [], [], [])
+    board_size = player_board.input_difficulty_level_for_board_size()
+    player_board.generate_game_board_grid(board_size)
+    player_board.generate_ship_location()
+    player_board.position_ships_on_board_grid()
+    player_board.print_grid_with_ships(board_size)
 
-    grid2 = Grid(0, 0, [], [], [])
-    grid2.generate_game_board_grid(board_size)
-    grid2.generate_ship_location()
-    grid2.position_ships_on_board_grid()
+    computer_board = Grid(0, 0, [], [], [])
+    computer_board.generate_game_board_grid(board_size)
+    computer_board.generate_ship_location()
     #to be removed when working:
-    grid2.print_grid_with_ships(board_size)
+    computer_board.position_ships_on_board_grid()
+    computer_board.print_grid_with_ships(board_size)
 
 
 main()
