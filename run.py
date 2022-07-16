@@ -64,7 +64,6 @@ class Grid:
             random_location = (randint(0, self.size - 1),
                                randint(0, self.size - 1))
             ship_position.add(random_location)
-            print((ship_position))
 
         list_ship_position = list(ship_position)
         self.ships = list_ship_position
@@ -97,11 +96,9 @@ def main():
     player_board.position_ships_on_board_grid()
     player_board.print_grid_with_ships(board_size)
 
-    computer_board = Grid(0, 0, [], [], [])
+    computer_board = Grid(board_size, 0, [], [], [])
     computer_board.generate_game_board_grid(board_size)
     computer_board.generate_ship_location()
-    #to be removed when working:
-    computer_board.position_ships_on_board_grid()
     computer_board.print_grid_with_ships(board_size)
 
 
