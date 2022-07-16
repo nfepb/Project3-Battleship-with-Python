@@ -15,8 +15,6 @@ Legend:
 
 Good luck admiral! \n
 """
-# Global variable to the grid
-GRID = []
 # Global variable for the alphabet
 ALPHABET = [
     'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
@@ -28,11 +26,10 @@ GRID_NUMBERS = "123456789"
 
 class Grid:
 
-    def __init__(self, size, display, difficulty, boardgame, ships):
+    def __init__(self, size, display, difficulty, ships):
         self.difficulty = difficulty
         self.display = display
         self.size = size
-        self.boardgame = boardgame
         self.ships = ships
 
     def input_difficulty_level_for_board_size(self):
@@ -69,7 +66,7 @@ class Grid:
         self.ships = list_ship_position
 
     def generate_game_board_grid(self, size):
-        grid_separators = [[' . ' for x in range(self.size)]
+        grid_separators = [[' _ ' for x in range(self.size)]
                            for y in range(self.size)]
 
         self.display = grid_separators
@@ -81,25 +78,99 @@ class Grid:
     def print_grid_with_ships(self, size):
         grid_numbers_to_print = 1
         header = '      '.join(x for x in ALPHABET[0:size])
-        print('     ' + header)
+        print('     ' + header.upper())
         for row in self.display:
             print(str(grid_numbers_to_print) + ' ' + str(row))
             grid_numbers_to_print += 1
+        print(' \n')
+        print('########################')
+
+
+class Player:
+
+    def __init__(self, name, tries):
+        self.name = name
+        self.tries = tries
+
+    def get_player_name(self):
+        player_name = input("Please enter your name: \n")
+        while player_name.isspace(
+        ) or not player_name or player_name == "Computer":
+            print("Your name cannot be blank or Computer," +
+                  "please provide a valid name!\n")
+            player_name = input("Please enter your name: \n")
+
+        self.name = player_name
+
+    def input_hit_location(self, size, ships, display):
+        if self.name == "Computer":
+            while True:
+                computer_column = randint(0, size - 1)
+                computer_row = randint(0, size - 1)
+                if self.verify_outcome_coordinates(
+                        size, [computer_column, computer_row], ships, display):
+                    continue
+                self.guesses_made.append([computer_column, computer_row])
+                self.display_result(ships, display)
+                break
+
+        else:
+            try:
+                row_response_location = input(
+                    "Please select the row for your next hit based on the numbers displayed on your grid.\n"
+                )
+                while row_response_location < 0 or row_response_location > size - 1:
+                    print(
+                        "Incorrect input. Please enter a row based on the numbers displayed on the grid."
+                    )
+
+                column_response_location = input(
+                    "Please select the column for your next hit based on the letters displayed on your grid.\n"
+                )
+                while column_response_location not in ALPHABET[0:size]:
+                    print(
+                        "Please enter one of the letters displayed on the grid."
+                    )
+                row_response_location = int(row_response_location) - 1
+                column_response_location = ALPHABET.index(
+                    column_response_location)
+                return row_response_location, column_response_location
+
+            except ValueError and KeyError:
+                print("Not a valid input")
+                return self.get_user_input()
+
+
+def display_result(self, ships, display):
+    for x, y in ships:
+        if self.tries_made[-1] == [x, y]:
+            print(f"\n{self.name} guessed: ({self.guesses_made[-1][0]}" +
+                  f",{self.guesses_made[-1][1]})")
+            print(f"{self.username} scores a direct hit!!!")
+            display[x][y] = "x  "
+            self.increment_score()
+            return True
+
+    display[self.guesses_made[-1][0]][self.guesses_made[-1][1]] = "o  "
+    print(f"{self.username} guessed: ({self.guesses_made[-1][0]}," +
+          f"{self.guesses_made[-1][1]})")
+    print(f"{self.username} hits the water...\n")
 
 
 def main():
     print(INTRO)
-    player_board = Grid(0, 0, [], [], [])
+    player_board = Grid(0, 0, [], [])
     board_size = player_board.input_difficulty_level_for_board_size()
     player_board.generate_game_board_grid(board_size)
     player_board.generate_ship_location()
     player_board.position_ships_on_board_grid()
     player_board.print_grid_with_ships(board_size)
 
-    computer_board = Grid(board_size, 0, [], [], [])
+    computer_board = Grid(board_size, 0, [], [])
     computer_board.generate_game_board_grid(board_size)
     computer_board.generate_ship_location()
     computer_board.print_grid_with_ships(board_size)
+    input_player_hit_location()
 
 
 main()
