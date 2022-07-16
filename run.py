@@ -83,8 +83,8 @@ class Grid:
 
     def print_grid_with_ships(self, size):
         grid_numbers_to_print = 1
-        header = '      '.join(x for x in ALPHABET[0:size + 1])
-        print('    ' + header)
+        header = '      '.join(x for x in ALPHABET[0:size])
+        print('     ' + header)
         for row in self.display:
             print(str(grid_numbers_to_print) + ' ' + str(row))
             grid_numbers_to_print += 1
@@ -97,8 +97,14 @@ def main():
     grid1.generate_game_board_grid(board_size)
     grid1.generate_ship_location()
     grid1.position_ships_on_board_grid()
-
     grid1.print_grid_with_ships(board_size)
+
+    grid2 = Grid(0, 0, [], [], [])
+    grid2.generate_game_board_grid(board_size)
+    grid2.generate_ship_location()
+    grid2.position_ships_on_board_grid()
+    #to be removed when working:
+    grid2.print_grid_with_ships(board_size)
 
 
 main()
