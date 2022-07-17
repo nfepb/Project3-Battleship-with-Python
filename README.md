@@ -32,6 +32,8 @@ Happy coding!
 
 ## Fixed bugs:
 
+* Creating a grid in Python [Stackoverflow](https://stackoverflow.com/questions/40566675/how-to-make-a-board-in-python)
+
 * Pylance kept giving an error. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error)
 
 * Issues deploying to Heroku with the main module. Random from 
