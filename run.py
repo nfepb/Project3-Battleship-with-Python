@@ -17,9 +17,9 @@ Legend:
 Good luck admiral! \n
 """
 # Global variable for the alphabet
-ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 # Global variable for the grid numbers
-GRID_NUMBERS = "12345678"
+GRID_NUMBERS = "1234567"
 
 
 class Grid:
@@ -45,11 +45,11 @@ class Ship:
         # creates 5 ships in random location and appends the grid
         for i in range(5):
             self.ship_row, self.ship_column = random.randint(
-                0, 6), random.randint(0, 6)
-            while self.grid[self.ship_row][self.ship_column] == " @ ":
+                0, 2), random.randint(0, 2)
+            while self.grid[self.ship_row][self.ship_column] == " X ":
                 self.ship_row, self.ship_column = random.randint(
-                    0, 6), random.randint(0, 6)
-        self.grid[self.ship_row][self.ship_column] = " @ "
+                    0, 2), random.randint(0, 2)
+        self.grid[self.ship_row][self.ship_column] = " X "
         return self.grid
 
     def get_coordinates_input(self):
@@ -92,7 +92,7 @@ def execute_game():
         player_hit_row, player_hit_column = Ship.get_coordinates_input(object)
         # checks if player already hit location
         while player_grid.grid[player_hit_row][
-                player_hit_column] == " _ " or player_grid.grid[
+                player_hit_column] == " O " or player_grid.grid[
                     player_hit_row][player_hit_column] == " X ":
             print("You already hit this location.")
             player_hit_row, player_hit_column = Ship.get_coordinates_input(
