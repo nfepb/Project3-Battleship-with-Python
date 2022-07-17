@@ -28,13 +28,12 @@ class Grid:
         self.grid = grid
 
     def print_game_board_grid(self):
-        header = '      '.join(x for x in ALPHABET[0:7])
+        header = '   ' + '   '.join(x for x in ALPHABET[0:7])
         print(header)
         grid_numbers_to_print = 1
         for row in self.grid:
             print("%d|%s|" % (grid_numbers_to_print, "|".join(row)))
             grid_numbers_to_print += 1
-            return grid_numbers_to_print
 
 
 class Ship:
@@ -92,29 +91,30 @@ def execute_game():
         # gets player coordinates for next hit
         player_hit_row, player_hit_column = Ship.get_coordinates_input(object)
         # checks if player already hit location
-    while player_grid.grid[player_hit_row][
-            player_hit_column] == " _ " or player_grid.grid[player_hit_row][
-                player_hit_column] == " X ":
-        print("You already hit this location.")
-        player_hit_row, player_hit_column = Ship.get_coordinates_input(object)
-    # checks for hit or miss
-    if computer_grid.grid[player_hit_row][player_hit_column] == " X ":
-        print("You hit a ship!")
-        player_grid.grid[player_hit_row][player_hit_column] = " X "
-    else:
-        print("Missed! You hit water.")
-        player_grid.grid[player_hit_row][player_hit_column] = " O "
-    # checks if player won or lost
-    if Ship.counter_numbers_of_ships_hit(player_grid) == 5:
-        print("Congratulations! You sunk all ennemy ships!")
-        break
-    else:
-        tries -= 1
-        print(f"You have {tries} shots left. Make them count!")
-        if tries == 0:
-            print("The ennemy has won. You ran out of shots")
-            Grid.print_game_board_grid(player_grid)
+        while player_grid.grid[player_hit_row][
+                player_hit_column] == " _ " or player_grid.grid[
+                    player_hit_row][player_hit_column] == " X ":
+            print("You already hit this location.")
+            player_hit_row, player_hit_column = Ship.get_coordinates_input(
+                object)
+        # checks for hit or miss
+        if computer_grid.grid[player_hit_row][player_hit_column] == " X ":
+            print("You hit a ship!")
+            player_grid.grid[player_hit_row][player_hit_column] = " X "
+        else:
+            print("Missed! You hit water.")
+            player_grid.grid[player_hit_row][player_hit_column] = " O "
+        # checks if player won or lost
+        if Ship.counter_numbers_of_ships_hit(player_grid) == 5:
+            print("Congratulations! You sunk all ennemy ships!")
             break
+        else:
+            tries -= 1
+            print(f"You have {tries} shots left. Make them count!")
+            if tries == 0:
+                print("The ennemy has won. You ran out of shots")
+                Grid.print_game_board_grid(player_grid)
+                break
 
 
 def main():
