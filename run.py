@@ -17,21 +17,17 @@ Legend:
 Good luck admiral! \n
 """
 # Global variable for the alphabet
-ALPHABET = [
-    'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o',
-    'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'
-]
+ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L']
 # Global variable for the grid numbers
 GRID_NUMBERS = "123456789"
 
 
 class Grid:
 
-    def __init__(self, name, size, display, difficulty, ships):
-        self.name = name
-        self.difficulty = difficulty
-        self.display = display
+    def __init__(self, size, display, difficulty, ships):
         self.size = size
+        self.display = display
+        self.difficulty = difficulty
         self.ships = ships
 
     def input_difficulty_level_for_board_size(self):
@@ -91,109 +87,57 @@ class Grid:
 
 class Player:
 
-    def __init__(self, name, tries):
-        self.name = name
+    def __init__(self, tries):
         self.tries_made = tries
 
-    def get_player_name(self):
-        player_name = input("Please enter your name: \n")
-        while player_name.isspace(
-        ) or not player_name or player_name == "Computer":
-            print("Your name cannot be blank or Computer," +
-                  "please provide a valid name!\n")
-            player_name = input("Please enter your name: \n")
-
-        self.name = player_name
-
-    def input_hit_location(self, size, ships, display):
-        if self.name == "Computer":
-            while True:
-                computer_column = randint(0, size - 1)
-                computer_row = randint(0, size - 1)
-                if self.verify_outcome_coordinates(
-                        size, [computer_column, computer_row], ships, display):
-                    continue
-                self.tries_made.append([computer_column, computer_row])
-                self.display_outcome(ships, display)
-                break
-
-        else:
-            try:
-                row_response_location = input(
-                    "Please select the row for your next hit based" +
-                    " on the numbers displayed on your grid.\n")
-                while (row_response_location < 0
-                       or row_response_location > size - 1):
-                    print("Incorrect input. Please enter a row based " +
-                          "on the numbers displayed on the grid.")
-
-                column_response_location = input(
-                    "Please select the column for your next hit based " +
-                    "on the letters displayed on your grid.\n")
-                while column_response_location not in ALPHABET[0:size]:
-                    print(
-                        "Please enter one of the letters displayed on the grid"
-                    )
-                row_response_location = int(row_response_location) - 1
-                column_response_location = ALPHABET.index(
-                    column_response_location)
-                return row_response_location, column_response_location
-
-            except ValueError and KeyError:
-                print("Invalid coordinates.")
-                return self.tries_made(
-                    [row_response_location, column_response_location])
-
-    def verify_outcome_coordinates(self, size, answer, ships, display):
-        if answer in self.tries_made:
-            if self.name != "Computer":
-                print("You have already uncovered this location," +
-                      " please select new coordinate.")
-            return True
-
-        return False
+    def computer_generate_random_hit(self, size):
+        computer_column = randint(0, size - 1)
+        computer_row = randint(0, size - 1)
+        print(computer_column, computer_row)
 
 
-def display_outcome(self, ships, display):
-    for x, y in ships:
-        if self.tries_made[-1] == [x, y]:
-            print(f"\n{self.name} guessed: ({self.tries_made[0][0]}" +
-                  f",{self.tries_made[-1][1]})")
-            print(f"{self.username} scores a direct hit!!!")
-            display[x][y] = " X "
-            return True
-
-    display[self.tries_made[-1][0]][self.tries_made[-1][1]] = " O "
-    print(f"{self.name} guessed: ({self.tries_made[-1][0]}," +
-          f"{self.tries_made[-1][1]})")
-    print(f"{self.name} hits the water...\n")
-
-
-def execute_game(player, computer, player_board, computer_board):
-    player_board.print_grid_with_ships()
-    computer_board.print_grid_with_ships()
-    player.input_hit_location(player_board.size, computer_board.ships,
-                              computer_board.display)
-    computer.input_hit_location(computer_board.size, player_board.ships,
-                                player_board.display)
+def input_hit_location(board_size):
+    valid_coordinates = False
+    while valid_coordinates is False:
+        player_location_hit = input(
+            "Select the next location you wish to uncover. " +
+            "Choose a letter followed by a number displayed on the grid. " +
+            "Please select the coordinates for your next hit:\n")
+        player_location_hit.upper()
+        if len(player_location_hit) <= 0 or len(player_location_hit) > 2:
+            print("Error: Please enter only one row and column such as A3")
+            continue
+        column = player_location_hit[0]
+        row = player_location_hit[1]
+        if not column.isalpha() or not row.isnumeric():
+            print("Error: Please enter letter for column and a number for row")
+            continue
+        column = ALPHABET.index(column.upper())
+        if not (-1 < column < board_size):
+            print("Error: Please enter letter for column and a number for row")
+            continue
+        row = int(row)
+        if not (-1 < row < board_size):
+            print("Error: Please enter letter for column and a number for row")
+            valid_coordinates = True
+        return row, column
+        print(column + row)
 
 
 def main():
     print(INTRO)
-    player = Player("", [])
-    computer = Player("Computer", [])
-    player_board = Grid(player.name, 0, 0, [], [])
+    player_board = Grid(0, 0, [], [])
     board_size = player_board.input_difficulty_level_for_board_size()
     player_board.generate_game_board_grid(board_size)
     player_board.generate_ship_location()
     player_board.position_ships_on_board_grid()
     player_board.print_grid_with_ships(board_size)
 
-    computer_board = Grid(computer.name, board_size, 0, [], [])
+    computer_board = Grid(board_size, 0, [], [])
     computer_board.generate_game_board_grid(board_size)
     computer_board.generate_ship_location()
     computer_board.print_grid_with_ships(board_size)
-    execute_game(player, computer, player_board, computer_board)
+    input_hit_location(board_size)
 
 
 main()
