@@ -126,8 +126,15 @@ def input_hit_location(board_size):
             print(column + row)
         return row, column
 
+
 def check_outcome():
-    
+    if Grid[row][column] == " X " or Grid[row][column] == " O ":
+        print("You have already uncovered this location. " +
+              "Please select other cooridnates.")
+    if Grid[row][column] == " _ ":
+        print("You have hit water.")
+    if grid[row][column] == " @ ":
+        print("It's a hit!")
 
 
 def main():
