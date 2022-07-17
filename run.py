@@ -112,16 +112,22 @@ def input_hit_location(board_size):
         if not column.isalpha() or not row.isnumeric():
             print("Error: Please enter letter for column and a number for row")
             continue
+        if not column in ALPHABET[0:board_size]:
+            print("Error: Please enter letter for column and a number for row")
+            continue
         column = ALPHABET.index(column.upper())
         if not (-1 < column < board_size):
             print("Error: Please enter letter for column and a number for row")
             continue
-        row = int(row)
+        row = int(row - 1)
         if not (-1 < row < board_size):
             print("Error: Please enter letter for column and a number for row")
             valid_coordinates = True
+            print(column + row)
         return row, column
-        print(column + row)
+
+def check_outcome():
+    
 
 
 def main():
