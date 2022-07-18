@@ -31,6 +31,12 @@ class Grid:
         self.grid = grid
 
     def print_game_board_grid(self):
+        """
+        Method that defines the grid:
+        - Letters for the header of the columns
+        - Numbers for the margin of the rows
+        Iterates for each row and increment number to print by 1.
+        """
         header = '   ' + '   '.join(x for x in ALPHABET[0:6])
         print(header)
         grid_numbers_to_print = 1
@@ -45,7 +51,10 @@ class Ship:
         self.grid = grid
 
     def generate_ships(self):
-        # creates 5 ships in random location and appends the grid
+        """
+        Creates 5 ships in random location and appends the grid.
+        Iterates for each ship.
+        """
         for i in range(5):
             self.ship_row, self.ship_column = random.randint(
                 0, 5), random.randint(0, 5)
@@ -56,9 +65,14 @@ class Ship:
         return self.grid
 
     def get_coordinates_input(self):
+        """
+        Method to allow player to provide coordinates for the next hit.
+        Data validation is done for each input.
+        """
         try:
             hit_row = input("Select the next row you wish to target:\n")
             while hit_row not in GRID_NUMBERS:
+                # Checks input for the row and validates data
                 print(
                     "Out of bound, please select a row displayed on the grid.")
                 hit_row = input("Which row do you wish to hit?\n")
@@ -66,15 +80,20 @@ class Ship:
             hit_column = input(
                 "Please select the column letter of the ship: \n").upper()
             while hit_column not in ALPHABET:
+                # Checks input for the column, translate into a number and validates data
                 print("Out of bounds, please select a valid column")
                 hit_column = input(
                     "Please select the column letter of the ship: \n").upper()
             return int(hit_row) - 1, ALPHABET.index(hit_column)
         except ValueError and KeyError:  # pylint: disable=W0702
+            # If error, will print message and call on method again.
             print("Invalid coordinates.")
             return self.get_coordinates_input()
 
     def counter_numbers_of_ships_hit(self):
+        """
+        Checks the number of ships that have been hit for win condition.
+        """
         ships_hit = 0
         for row in self.grid:
             for column in row:
@@ -84,6 +103,14 @@ class Ship:
 
 
 def execute_game():
+    """
+    Function to run the game. 
+    It will define the grid size and call on the 2 classes.
+    It will generate the ship locations and then populate the ships
+    on the Grid based on the generated coordinates.
+    Will check the coordinates input and run the game logic to check outcome.
+    Decreases the count of number of tries after each hit.
+    """
     computer_grid = Grid([[" _ "] * 6 for i in range(6)])
     player_grid = Grid([[" _ "] * 6 for i in range(6)])
     Ship.generate_ships(computer_grid)
@@ -121,6 +148,9 @@ def execute_game():
 
 
 def play_again():
+    """
+    At the end of the game, proposes to launch a new game.
+    """
     restart = input("Do you want to play another game? (Y/N")
     if restart.upper() == "Y":
         execute_game()
@@ -132,6 +162,9 @@ def play_again():
 
 
 def main():
+    """
+    Main function that calls on the class methods and run the game.
+    """
     print(INTRO)
     execute_game()
     play_again()
