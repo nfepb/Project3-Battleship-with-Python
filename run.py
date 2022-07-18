@@ -9,9 +9,8 @@ and sinking all the ennemy's ships.
 You have 20 tries to sink the 5 ennemy ships before they overrun you.
 
 Legend:
-"." = empty space
+"_" = empty space
 "O" = empty location hit
-"@" = part of ship on player game board
 "X" = part of ship that was hit
 
 Good luck admiral! \n
