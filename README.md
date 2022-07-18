@@ -147,6 +147,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 - [CaringTiger's Battleship repo](https://github.com/caringtiger/battleships/blob/master/main.py#L7).
 - [StackOverflow](https://stackoverflow.com/) was a great source for identifiying technical challenges I was facing and for helping to move forward.
 - Quinto's question on [StackOverflow](https://stackoverflow.com/questions/36609140/how-to-make-this-battleship-game-more-user-friendly-in-terms-of-values)
+- [How to Code Battleship in Python - Single Player Game](https://www.youtube.com/watch?v=alJH_c9t4zw) Video
 - [Catching Exceptions With try and except](https://realpython.com/lessons/catching-exceptions-try-except/)
 - My mentor, Ronan. A great help in moving forward and identfying the appropriate resources.
 - My friends Greg and Colm for their support on the final steps of the projet and helping bring some perspective on some of the functions (looking at you `print_game_board_grid()` and `generate_ships()`).
