@@ -19,7 +19,7 @@ Good luck admiral! \n
 # Global variable for the alphabet
 ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 # Global variable for the grid numbers
-GRID_NUMBERS = "123456"
+GRID_NUMBERS = "1234567"
 
 
 class Grid:
@@ -81,8 +81,8 @@ class Ship:
 
 
 def execute_game():
-    computer_grid = Grid([[" _ "] * 6 for i in range(7)])
-    player_grid = Grid([[" _ "] * 6 for i in range(7)])
+    computer_grid = Grid([[" _ "] * 7 for i in range(7)])
+    player_grid = Grid([[" _ "] * 7 for i in range(7)])
     Ship.generate_ships(computer_grid)
     # Sets limit for the game and defines how many tries the player has
     tries = 20
