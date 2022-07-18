@@ -12,6 +12,22 @@ The purpose of the game is for the users to find all the computer ships (5 ships
 
 ![Mockup](assets/images/mockup.png)
 
+## Table of Contents
+
+- [How to play](#how-to-play)
+- [Features](#features)
+    - [Implemented features](#implemented-features)
+    - [Future Features](#future-features)
+- [Data Model](#data-model)
+- [Testing](#testing)
+    - [User Goals](#user-goals)
+    - [Technology](#technology)
+- [Bugs]
+    - [Fixed Bugs](#fixed-bugs)
+    - [Validator Testing](#validator-testing)
+- [Testing](#testing)
+- [Credits](#credits)
+
 ## How to play
 Battleship is a turn-based naval strategy game. Originally known as a pencil and paper game, the game has evolved in its format and has its own variations. You can find out more about this game and its history on its [Wikipedia page](https://en.wikipedia.org/wiki/Battleship_(game)#:~:text=Battleship%20(also%20known%20as%20Battleships,concealed%20from%20the%20other%20player.).
 
@@ -124,9 +140,9 @@ This project was deployed using Code Institute's mock terminal for Heroku.
     - Create a new [Heroku](https://dashboard.heroku.com/apps) app.
     - Set the buildbacks to `Python` and `NodeJS` in that order.
     - Link the Heroku app to the repository (in the read.me)
-    - Click on __Deploy__.
+    - Click on `__Deploy__`.
 
-## Credits
+## Credits
 
 - Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://github.com/DioCar84/battleships/blob/2f5cca939e4f50f6064233ef7733f7a1f99a64b8/run.py) of the CodeInstitue was a good source of inspiration for the data model. 
 - Austin Montgomery's [Python for Beginners: Battleship](https://bigmonty12.github.io/battleship) was a step by step guide that helped me throughout fixing some of the bugs I encountered.
