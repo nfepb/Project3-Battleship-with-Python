@@ -37,13 +37,15 @@ Each turn, the user will be select to select a row and a column that will work a
     - Verifies if the column is a letter.
     - Converts the letter in a number.
 
-![wrong coordinates]()
+![wrong coordinates](assets/images/screenshot-testing-input.png)
 
 - Outcome logic after input has been validated
     - Verifies if the selected coordinates have not been previously hit.
     - Checks on the grid if an ennemy ship is located there.
     - Checks on the grid if it is an empty location. 
     - Reduces the count of tries left by one.
+
+![outcome logic](assets/images/screenshot-testing-logic.png)
 
 ### Future Features
 
@@ -72,14 +74,22 @@ The final method for this object, `counter_numbers_of_ships_hit()` will keep tra
 
 ## Testing
 
+### User goals
+
 | Goal                                                                                               | Outcome                                                                             |
 | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | As a user, I want to understand the main purpose of the site.                                      | Intro message explains the goal of this programme.                                       |
 | As a user, I want to easily understand the rules.                                                  | Win conditions are described in the intro message. |
 | As a user, I want to know exactly what coordinates I can choose                                      | The grid prints numbers for rows and letters for columns. Each input is asked for separately.                             |
+| As a user, I want to know input only correct coordinates.                                      | Data validations rules are there to make sure the player only rows and columns displayed on the grid.                             |
 | As a user, I want to know how many tries I have left before losing.                                  | Counter for tries is printed after each shot.         |
 | As a user, I want to read the outcome of each round.                                               | Outcome message displayed after each round.                                         |
 | As a user, I want to be able to start a new game when the current game has come to an end.         | Not implemented yet.                                  |
+| As a user, I want to be able to run the game from GitHub and from Heroku         | Programme is running on both terminals.                                  |
+
+### Technology
+
+The code is passing the PEP8 linter validation. No errors were identified. 
 
 
 ## Fixed bugs:
