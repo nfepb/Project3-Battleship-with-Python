@@ -72,7 +72,7 @@ class Ship:
         try:
             hit_row = input("Select the next row you wish to target:\n")
             while hit_row not in GRID_NUMBERS:
-                # Checks input for the row and validates data
+                # Checks input for the row
                 print(
                     "Out of bound, please select a row displayed on the grid.")
                 hit_row = input("Which row do you wish to hit?\n")
@@ -80,7 +80,7 @@ class Ship:
             hit_column = input(
                 "Please select the column letter of the ship: \n").upper()
             while hit_column not in ALPHABET:
-                # Checks input for the column, translate into a number and validates data
+                # Checks input for the column, translate into a number
                 print("Out of bounds, please select a valid column")
                 hit_column = input(
                     "Please select the column letter of the ship: \n").upper()
