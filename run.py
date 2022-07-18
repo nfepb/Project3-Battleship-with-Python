@@ -120,9 +120,21 @@ def execute_game():
                 break
 
 
+def play_again():
+    restart = input("Do you want to play another game? (Y/N")
+    if restart.upper() == "Y":
+        execute_game()
+    if restart.upper() == "N":
+        print("Thank you for playing. Hope to see you again soon.")
+    else:
+        print("I did not understand.")
+        restart = input("Do you want to play another game? (Y/N")
+
+
 def main():
     print(INTRO)
     execute_game()
+    play_again()
 
 
 main()
