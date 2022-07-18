@@ -109,3 +109,20 @@ Numbers for the grid did not print and only `1` was added on the first row. Stac
 * Pylance kept identifying an error in regards to a try/except statement. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error).
 
 * `generate_ships()` was creating ships out of bound when trying to pass the grid argument from the object. The hard value 6 is now used to generate the ship on the 6x6 grid.
+
+### Validator testing
+
+- PEP8
+    - No problems were identified from [PEP8 Online Check](http://pep8online.com/checkresult)
+
+## Deployment
+
+This project was deployed using Code Institute's mock terminal for Heroku.
+
+  - Steps for deployment:
+    - Create a copy of the [Python Essentials Template](https://github.com/Code-Institute-Org/python-essentials-template) repository
+    - Freeze the requirements.txt
+    - Create a new [Heroku](https://dashboard.heroku.com/apps) app.
+    - Set the buildbacks to `Python` and `NodeJS` in that order.
+    - Link the Heroku app to the repository (in the read.me)
+    - Click on __Deploy__.
