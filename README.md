@@ -22,7 +22,7 @@ The purpose of the game is for the users to find all the computer ships (5 ships
 - [Testing](#testing)
     - [User Goals](#user-goals)
     - [Technology](#technology)
-- [Bugs]
+- [Bugs](#bugs)
     - [Fixed Bugs](#fixed-bugs)
     - [Validator Testing](#validator-testing)
 - [Testing](#testing)
@@ -71,11 +71,11 @@ Each turn, the user will be select to select a row and a column that will work a
 
 Imagination can go a long way. Battleship, through its variations, is a good display of that. Due to time constraints, I could not implement all the features I wanted to make available for the players. These features may be released in future updates:
 
-- Add a player grid to display the ships,
-- Have a computer trying to hit the players' ships,
-- Add several lengths and allow different directions for ship placement,
-- Ask for difficulty input to define size of the grids (initially implemented and then removed),
-- [Add color](https://pypi.org/project/colorize/) based on the outcome.
+- [ ] Add a player grid to display the ships,
+- [ ] Have a computer trying to hit the players' ships,
+- [ ] Add several lengths and allow different directions for ship placement,
+- [ ] Ask for difficulty input to define size of the grids (initially implemented and then removed),
+- [ ] [Add color](https://pypi.org/project/colorize/) based on the outcome.
 
 ## Data Model
 
@@ -110,7 +110,6 @@ The final method for this object, `counter_numbers_of_ships_hit()` will keep tra
 
 The code is passing the PEP8 linter validation. No errors were identified. 
 
-
 ## Bugs
 
 ### Fixed Bugs
@@ -119,7 +118,6 @@ The code is passing the PEP8 linter validation. No errors were identified.
 Numbers for the grid did not print and only `1` was added on the first row. StackOverflow was a good place to start. Several questions and outcomes were proposed to solve this:
 - [How to make a board in python?](https://stackoverflow.com/questions/40566675/how-to-make-a-board-in-python)
 - [Creating a row of numbers/ letters in my Python Battleship game](https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game).
-
 
 * Pylance kept identifying an error in regards to a try/except statement. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error).
 
