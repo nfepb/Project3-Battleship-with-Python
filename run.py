@@ -48,10 +48,10 @@ class Ship:
         # creates 5 ships in random location and appends the grid
         for i in range(5):
             self.ship_row, self.ship_column = random.randint(
-                0, 6), random.randint(0, 6)
+                0, 5), random.randint(0, 5)
             while self.grid[self.ship_row][self.ship_column] == " X ":
                 self.ship_row, self.ship_column = random.randint(
-                    0, 6), random.randint(0, 6)
+                    0, 5), random.randint(0, 5)
             self.grid[self.ship_row][self.ship_column] = " X "
         return self.grid
 

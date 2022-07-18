@@ -1,8 +1,10 @@
 ![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
 
+# Object Oriented Python: A Battleship Game
+
 Welcome,
 
-Everyone knows the game of Battleship and is familiar with the rules. You will find here a representation of the Battleship game run through a Python terminal. This terminal is running on Heroku.
+Everyone knows the game of **Battleship** and is familiar with the rules. You will find here a representation of the Battleship game run through a Python terminal. This terminal is running on Heroku.
 
 The purpose of the game is for the users to find all the computer ships (5 ships) before the player runs out of tries/bullets/guesses. Each ship occupies one square on the grid.
 
@@ -96,10 +98,6 @@ The code is passing the PEP8 linter validation. No errors were identified.
 
 ### Fixed Bugs
 
-- Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://github.com/DioCar84/battleships/blob/2f5cca939e4f50f6064233ef7733f7a1f99a64b8/run.py) of the CodeInstitue was a good source of inspiration for the data model. 
-- Austin Montgomery's [Python for Beginners: Battleship](https://bigmonty12.github.io/battleship) was a step by step guide that helped me throughout fixing some of the bugs I encountered.
-- [CaringTiger's Battleship repo](https://github.com/caringtiger/battleships/blob/master/main.py#L7).
-
 * Creating a grid in Python 
 Numbers for the grid did not print and only `1` was added on the first row. StackOverflow was a good place to start. Several questions and outcomes were proposed to solve this:
 - [How to make a board in python?](https://stackoverflow.com/questions/40566675/how-to-make-a-board-in-python)
@@ -126,3 +124,14 @@ This project was deployed using Code Institute's mock terminal for Heroku.
     - Set the buildbacks to `Python` and `NodeJS` in that order.
     - Link the Heroku app to the repository (in the read.me)
     - Click on __Deploy__.
+
+## Credits
+
+- Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://github.com/DioCar84/battleships/blob/2f5cca939e4f50f6064233ef7733f7a1f99a64b8/run.py) of the CodeInstitue was a good source of inspiration for the data model. 
+- Austin Montgomery's [Python for Beginners: Battleship](https://bigmonty12.github.io/battleship) was a step by step guide that helped me throughout fixing some of the bugs I encountered.
+- [CaringTiger's Battleship repo](https://github.com/caringtiger/battleships/blob/master/main.py#L7).
+- [StackOverflow](https://stackoverflow.com/) was a great source for identifiying technical challenges I was facing and for helping to move forward.
+- Quinto's question on [StackOverflow](https://stackoverflow.com/questions/36609140/how-to-make-this-battleship-game-more-user-friendly-in-terms-of-values)
+- My mentor, Ronan. A great help in moving forward and identfying the appropriate resources.
+- My friends Greg and Colm for their support on the final steps of the projet and helping bring some perspective on some of the functions (looking at you `print_game_board_grid()` and `generate_ships()`).
+- [Wikipedia](https://en.wikipedia.org/wiki/Battleship_(game)) for the rules and history of the Battleships game
