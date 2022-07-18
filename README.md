@@ -45,6 +45,17 @@ Each turn, the user will be select to select a row and a column that will work a
     - Checks on the grid if it is an empty location. 
     - Reduces the count of tries left by one.
 
+### Future Features
+
+Imagination can go a long way. Battleship, through its variations, is a good display of that. Due to time constraints, I could not implement all the features I wanted to make available for the players. These features may be released in future updates:
+
+- Add a player grid to display the ships,
+- Have a computer trying to hit the players' ships
+- Add several lengths and allow different directions for ship placement
+- Ask for difficulty input to define size of the grids (initially implemented and then removed).
+
+
+
 
 
 
