@@ -19,7 +19,7 @@ Good luck admiral! \n
 # Global variable for the alphabet
 ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
 # Global variable for the grid numbers
-GRID_NUMBERS = "1234567"
+GRID_NUMBERS = "123456"
 
 
 class Grid:
@@ -28,7 +28,7 @@ class Grid:
         self.grid = grid
 
     def print_game_board_grid(self):
-        header = '   ' + '   '.join(x for x in ALPHABET[0:7])
+        header = '   ' + '   '.join(x for x in ALPHABET[0:6])
         print(header)
         grid_numbers_to_print = 1
         for row in self.grid:
@@ -45,11 +45,11 @@ class Ship:
         # creates 5 ships in random location and appends the grid
         for i in range(5):
             self.ship_row, self.ship_column = random.randint(
-                0, 2), random.randint(0, 2)
+                0, 6), random.randint(0, 6)
             while self.grid[self.ship_row][self.ship_column] == " X ":
                 self.ship_row, self.ship_column = random.randint(
-                    0, 2), random.randint(0, 2)
-        self.grid[self.ship_row][self.ship_column] = " X "
+                    0, 6), random.randint(0, 6)
+            self.grid[self.ship_row][self.ship_column] = " X "
         return self.grid
 
     def get_coordinates_input(self):
@@ -77,15 +77,15 @@ class Ship:
             for column in row:
                 if column == " X ":
                     ships_hit += 1
-            return ships_hit
+        return ships_hit
 
 
 def execute_game():
-    computer_grid = Grid([[" _ "] * 7 for i in range(7)])
-    player_grid = Grid([[" _ "] * 7 for i in range(7)])
+    computer_grid = Grid([[" _ "] * 6 for i in range(7)])
+    player_grid = Grid([[" _ "] * 6 for i in range(7)])
     Ship.generate_ships(computer_grid)
     # Sets limit for the game and defines how many tries the player has
-    tries = 13
+    tries = 20
     while tries > 0:
         Grid.print_game_board_grid(player_grid)
         # gets player coordinates for next hit
