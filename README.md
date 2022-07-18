@@ -10,6 +10,8 @@ The purpose of the game is for the users to find all the computer ships (5 ships
 
 [View the live version of the programme running on Heroku](https://project3-battleship-project.herokuapp.com/)
 
+![Mockup](assets/images/mockup.png)
+
 ## How to play
 Battleship is a turn-based naval strategy game. Originally known as a pencil and paper game, the game has evolved in its format and has its own variations. You can find out more about this game and its history on its [Wikipedia page](https://en.wikipedia.org/wiki/Battleship_(game)#:~:text=Battleship%20(also%20known%20as%20Battleships,concealed%20from%20the%20other%20player.).
 
@@ -25,7 +27,7 @@ Each turn, the user will be select to select a row and a column that will work a
 
 ![intro message](assets/images/screenshot-intro-message.png)
 
-- The grid with the numbers for the rows and the letters for the columns to guide the player in how to select locations. The 5 ennemy ships are randomly generated on the grid (but of course not displayed):
+- The grid with the numbers for the rows and the letters for the columns to guide the player in how to select locations. The printing will iterate for the number of columns. The 5 ennemy ships are randomly generated on the grid (but of course not displayed):
 
 ![opening grid](assets/images/screenshot-opening-grid.png)
 
