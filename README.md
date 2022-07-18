@@ -142,7 +142,7 @@ This project was deployed using Code Institute's mock terminal for Heroku.
 
 ## Credits
 
-- Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://github.com/DioCar84/battleships/blob/2f5cca939e4f50f6064233ef7733f7a1f99a64b8/run.py) of the CodeInstitue was a good source of inspiration for the data model. 
+- Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://en.wikipedia.org/wiki/Battleship_(game)) of the CodeInstitue was a good source of inspiration for the data model. 
 - Austin Montgomery's [Python for Beginners: Battleship](https://bigmonty12.github.io/battleship) was a step by step guide that helped me throughout fixing some of the bugs I encountered.
 - [CaringTiger's Battleship repo](https://github.com/caringtiger/battleships/blob/master/main.py#L7).
 - [StackOverflow](https://stackoverflow.com/) was a great source for identifiying technical challenges I was facing and for helping to move forward.
