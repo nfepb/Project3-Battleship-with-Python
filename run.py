@@ -3,6 +3,8 @@ import random
 # Global variables for the boardgames
 # Global variable for the welcome message
 INTRO = """
+**********************************************
+
 Welcome admiral! This is a game of battleship.
 The objective is to win the battle by finding 
 and sinking all the ennemy's ships.
@@ -13,7 +15,9 @@ Legend:
 "O" = empty location hit
 "X" = part of ship that was hit
 
-Good luck admiral! \n
+Good luck admiral! 
+
+***********************************************\n
 """
 # Global variable for the alphabet
 ALPHABET = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
