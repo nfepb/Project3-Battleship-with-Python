@@ -70,7 +70,7 @@ class Ship:
                 hit_column = input(
                     "Please select the column letter of the ship: \n").upper()
             return int(hit_row) - 1, ALPHABET.index(hit_column)
-        except ValueError and KeyError:
+        except ValueError and KeyError:  # pylint: disable=W0702
             print("Invalid coordinates.")
             return self.get_coordinates_input()
 

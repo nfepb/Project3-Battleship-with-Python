@@ -92,10 +92,20 @@ The final method for this object, `counter_numbers_of_ships_hit()` will keep tra
 The code is passing the PEP8 linter validation. No errors were identified. 
 
 
-## Fixed bugs:
+## Bugs
 
-* Creating a grid in Python [Stackoverflow](https://stackoverflow.com/questions/40566675/how-to-make-a-board-in-python)
+### Fixed Bugs
 
-* Pylance kept giving an error. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error)
+- Several ressources were identified in helping creating the Battleship game. [DioCar84's Battleship project](https://github.com/DioCar84/battleships/blob/2f5cca939e4f50f6064233ef7733f7a1f99a64b8/run.py) of the CodeInstitue was a good source of inspiration for the data model. 
+- Austin Montgomery's [Python for Beginners: Battleship](https://bigmonty12.github.io/battleship) was a step by step guide that helped me throughout fixing some of the bugs I encountered.
+- [CaringTiger's Battleship repo](https://github.com/caringtiger/battleships/blob/master/main.py#L7).
 
-* Issues deploying to Heroku with the main module. Random from 
+* Creating a grid in Python 
+Numbers for the grid did not print and only `1` was added on the first row. StackOverflow was a good place to start. Several questions and outcomes were proposed to solve this:
+- [How to make a board in python?](https://stackoverflow.com/questions/40566675/how-to-make-a-board-in-python)
+- [Creating a row of numbers/ letters in my Python Battleship game](https://stackoverflow.com/questions/53446425/creating-a-row-of-numbers-letters-in-my-python-battleship-game).
+
+
+* Pylance kept identifying an error in regards to a try/except statement. Disabled pylance in the except statement thanks to a solved question on [Stackexchange](https://stackoverflow.com/questions/53408630/catching-all-exceptions-without-pylint-error).
+
+* `generate_ships()` was creating ships out of bound when trying to pass the grid argument from the object. The hard value 6 is now used to generate the ship on the 6x6 grid.
