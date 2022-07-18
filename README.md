@@ -76,7 +76,7 @@ The final method for this object, `counter_numbers_of_ships_hit()` will keep tra
 
 ### User goals
 
-| Goal                                                                                               | Outcome                                                                             |
+| **Goal**                                                                                               | **Outcome**                                                                             |
 | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
 | As a user, I want to understand the main purpose of the site.                                      | Intro message explains the goal of this programme.                                       |
 | As a user, I want to easily understand the rules.                                                  | Win conditions are described in the intro message. |
