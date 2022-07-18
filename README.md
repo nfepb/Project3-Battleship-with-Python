@@ -36,9 +36,14 @@ Each turn, the user will be select to select a row and a column that will work a
     - Converts the row input in coordinates (substracts 1)
     - Verifies if the column is a letter.
     - Converts the letter in a number.
-    - Verifies that these coordinates have not been previously hit.
 
-- 
+![wrong coordinates]()
+
+- Outcome logic after input has been validated
+    - Verifies if the selected coordinates have not been previously hit.
+    - Checks on the grid if an ennemy ship is located there.
+    - Checks on the grid if it is an empty location. 
+    - Reduces the count of tries left by one.
 
 
 

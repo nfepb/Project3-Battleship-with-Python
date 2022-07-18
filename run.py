@@ -84,8 +84,8 @@ class Ship:
 
 
 def execute_game():
-    computer_grid = Grid([[" _ "] * 6 for i in range(7)])
-    player_grid = Grid([[" _ "] * 6 for i in range(7)])
+    computer_grid = Grid([[" _ "] * 6 for i in range(6)])
+    player_grid = Grid([[" _ "] * 6 for i in range(6)])
     Ship.generate_ships(computer_grid)
     # Sets limit for the game and defines how many tries the player has
     tries = 20
