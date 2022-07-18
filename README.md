@@ -54,17 +54,20 @@ Imagination can go a long way. Battleship, through its variations, is a good dis
 - Add several lengths and allow different directions for ship placement
 - Ask for difficulty input to define size of the grids (initially implemented and then removed).
 
+## Data Model
 
+For this project, there are 2 classes that define the model:
+- Grid
+- Ship
 
+The choice of using two classes was done for scalability of future features. In this version of the game, the `Grid` and the `Ship` classes store the `grid` argument. The function `print_game_board_grid()` is taking the size parameters and defines which letters to print based on the grid size and how many numbers to print for each row.
 
+The second class, `Ships`, contains more functions. `generate_ships()` is going to generate 2 random numbers that will act as coordinates (row, column). This will iterate 5 times for the 5 ennemy ships to be generated and positioned. These coordinates will be used to position the ennemy ships on the grid by marking (but not printing) the location with `X`.
 
+Within this same class, `get_coordinates_input()` will ask for the player to select first a row number, validate this first input and then a letter for the column, which will also be validated as well. 
 
-## Constraints
+The final method for this object, `counter_numbers_of_ships_hit()` will keep track of the number of ships and increase the count for each ship being hit. 
 
-The deployment terminal is set to 80 columns by 24 rows. That means that each line of text needs to be 80 characters or less otherwise it will be wrapped onto a second line.
-
------
-Happy coding!
 
 ## Fixed bugs:
 
