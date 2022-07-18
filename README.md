@@ -55,7 +55,6 @@ Each turn, the user will be select to select a row and a column that will work a
 
 Imagination can go a long way. Battleship, through its variations, is a good display of that. Due to time constraints, I could not implement all the features I wanted to make available for the players. These features may be released in future updates:
 
-- Restart new game at the end of the current game,
 - Add a player grid to display the ships,
 - Have a computer trying to hit the players' ships,
 - Add several lengths and allow different directions for ship placement,
@@ -88,7 +87,7 @@ The final method for this object, `counter_numbers_of_ships_hit()` will keep tra
 | As a user, I want to know input only correct coordinates.                                      | Data validations rules are there to make sure the player only rows and columns displayed on the grid.                             |
 | As a user, I want to know how many tries I have left before losing.                                  | Counter for tries is printed after each shot.         |
 | As a user, I want to read the outcome of each round.                                               | Outcome message displayed after each round.                                         |
-| As a user, I want to be able to start a new game when the current game has come to an end.         | Not implemented yet.                                  |
+| As a user, I want to be able to start a new game when the current game has come to an end.         | At the end of the game, the player can choose to play another game.                                  |
 | As a user, I want to be able to run the game from GitHub and from Heroku         | Programme is running on both terminals.                                  |
 
 ### Technology
