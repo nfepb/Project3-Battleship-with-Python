@@ -6,7 +6,7 @@ INTRO = """
 Welcome admiral! This is a game of battleship.
 The objective is to win the battle by finding 
 and sinking all the ennemy's ships.
-You have 50 tries to sink the ennemy fleet before they overrun you.
+You have 20 tries to sink the 5 ennemy ships before they overrun you.
 
 Legend:
 "." = empty space
