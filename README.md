@@ -15,18 +15,33 @@ In this version of the game, the player sees the guess board. This is a one play
 
 Each turn, the user will be select to select a row and a column that will work as coordinates to target a location on the grid. The outcome of this selection will display a "O" for a missed shot, or water, or a "X" for a hit. Locations that have not been hit yet are marked on the grid by a "_".
 
-## Creating the Heroku app
+## Features
 
-When you create the app, you will need to add two buildpacks from the _Settings_ tab. The ordering is as follows:
+### Implemented features
 
-1. `heroku/python`
-2. `heroku/nodejs`
+- Introduction message explaining the programme, the game, and the winning conditions:
 
-You must then create a _Config Var_ called `PORT`. Set this to `8000`
+![intro message](assets/images/screenshot-intro-message.png)
 
-If you have credentials, such as in the Love Sandwiches project, you must create another _Config Var_ called `CREDS` and paste the JSON into the value field.
+- The grid with the numbers for the rows and the letters for the columns to guide the player in how to select locations. The 5 ennemy ships are randomly generated on the grid (but of course not displayed):
 
-Connect your GitHub repository and deploy as normal.
+![opening grid](assets/images/screenshot-opening-grid.png)
+
+- Input message to invite the player to select the next coordinates for the next try:
+
+![input coordinates](assets/images/screenshot-input-row-and-column.png)
+
+- Logic to verify the input for rows and columns.
+    - Verifies if the row input is an integer.
+    - Converts the row input in coordinates (substracts 1)
+    - Verifies if the column is a letter.
+    - Converts the letter in a number.
+    - Verifies that these coordinates have not been previously hit.
+
+- 
+
+
+
 
 ## Constraints
 
