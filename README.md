@@ -49,10 +49,12 @@ Each turn, the user will be select to select a row and a column that will work a
 
 Imagination can go a long way. Battleship, through its variations, is a good display of that. Due to time constraints, I could not implement all the features I wanted to make available for the players. These features may be released in future updates:
 
+- Restart new game at the end of the current game,
 - Add a player grid to display the ships,
-- Have a computer trying to hit the players' ships
-- Add several lengths and allow different directions for ship placement
-- Ask for difficulty input to define size of the grids (initially implemented and then removed).
+- Have a computer trying to hit the players' ships,
+- Add several lengths and allow different directions for ship placement,
+- Ask for difficulty input to define size of the grids (initially implemented and then removed),
+- Add color based on the outcome.
 
 ## Data Model
 
@@ -67,6 +69,17 @@ The second class, `Ships`, contains more functions. `generate_ships()` is going 
 Within this same class, `get_coordinates_input()` will ask for the player to select first a row number, validate this first input and then a letter for the column, which will also be validated as well. 
 
 The final method for this object, `counter_numbers_of_ships_hit()` will keep track of the number of ships and increase the count for each ship being hit. 
+
+## Testing
+
+| Goal                                                                                               | Outcome                                                                             |
+| -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| As a user, I want to understand the main purpose of the site.                                      | Intro message explains the goal of this programme.                                       |
+| As a user, I want to easily understand the rules.                                                  | Win conditions are described in the intro message. |
+| As a user, I want to know exactly what coordinates I can choose                                      | The grid prints numbers for rows and letters for columns. Each input is asked for separately.                             |
+| As a user, I want to know how many tries I have left before losing.                                  | Counter for tries is printed after each shot.         |
+| As a user, I want to read the outcome of each round.                                               | Outcome message displayed after each round.                                         |
+| As a user, I want to be able to start a new game when the current game has come to an end.         | Not implemented yet.                                  |
 
 
 ## Fixed bugs:
